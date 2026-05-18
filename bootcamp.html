@@ -983,8 +983,13 @@
       border-color: var(--t1)
     }
 
-    .r-pane { display: none }
-    .r-pane.active { display: block }
+    .r-pane {
+      display: none
+    }
+
+    .r-pane.active {
+      display: block
+    }
 
     .rsec-hd {
       font-size: 10px;
@@ -995,7 +1000,9 @@
       margin: 1.25rem 0 .5rem
     }
 
-    .rsec-hd:first-child { margin-top: 0 }
+    .rsec-hd:first-child {
+      margin-top: 0
+    }
 
     .rsec-hd span {
       font-weight: 400;
@@ -1010,11 +1017,25 @@
       gap: 8px
     }
 
-    .r-g1 { grid-template-columns: 1fr }
-    .r-g2 { grid-template-columns: repeat(2, 1fr) }
-    .r-g3 { grid-template-columns: repeat(3, 1fr) }
-    .r-g4 { grid-template-columns: repeat(4, 1fr) }
-    .r-g5 { grid-template-columns: repeat(5, 1fr) }
+    .r-g1 {
+      grid-template-columns: 1fr
+    }
+
+    .r-g2 {
+      grid-template-columns: repeat(2, 1fr)
+    }
+
+    .r-g3 {
+      grid-template-columns: repeat(3, 1fr)
+    }
+
+    .r-g4 {
+      grid-template-columns: repeat(4, 1fr)
+    }
+
+    .r-g5 {
+      grid-template-columns: repeat(5, 1fr)
+    }
 
     .r-card {
       background: var(--bp);
@@ -1032,25 +1053,19 @@
       margin-bottom: .4rem
     }
 
-    .r-input {
+    .r-value {
       width: 100%;
-      border: 0.5px solid var(--bd);
-      border-radius: var(--r);
       padding: .4rem .6rem;
       font-size: 13px;
-      font-family: inherit;
       color: var(--t1);
-      background: var(--bs);
-      outline: none;
-      margin-bottom: .3rem
+      margin-bottom: .3rem;
+      min-height: 1.8rem
     }
 
-    .r-input:focus {
-      border-color: var(--mon);
-      background: var(--bp)
+    .r-value.empty {
+      color: var(--t3);
+      font-style: italic
     }
-
-    .r-input::placeholder { color: var(--t3) }
 
     .r-meta {
       font-size: 10px;
@@ -1241,7 +1256,8 @@
     <section id="roster" class="section">
       <div class="sec-eyebrow">People</div>
       <h2 class="sec-title">Roster</h2>
-      <p class="sec-sub">Fill in names — they propagate live into the curriculum and staffing views. Saved automatically in your browser.</p>
+      <p class="sec-sub">Names are configured in the <code>ROSTER</code> object in the script — edit it directly to
+        populate this view.</p>
       <div class="r-tabs" id="r-tabs" style="margin-top:1rem">
         <button class="r-tab active" onclick="switchRosterTab('volunteers')">Volunteers</button>
         <button class="r-tab" onclick="switchRosterTab('students')">Students</button>
@@ -1296,12 +1312,12 @@
   </main>
   <script>
     const ROSTER = {
-      coordinator: '',
-      groupTAs: ['', '', '', '', ''],
-      labTAs: ['', ''],
-      instructors: ['', '', '', '', '', '', '', '', '', '', ''],
-      principal: '',
-      mockPanel: ['', '', ''],
+      coordinator: 'N/A',
+      groupTAs: ['Aseel Awad', 'Ibrahim Shawahna', 'Sujud Sa\'era ', '', ''],
+      labTAs: ['Aseel Assi', 'Ahmad Musleh'],
+      instructors: ['Muhammad abu soud', 'Wajed Afaneh', 'Mouhammad Abu Tami', 'Ahmad Rayan', 'Adnan', 'Mahdi', 'Wafeqa Salam', 'Nasser Najar', '', '', ''],
+      principal: 'Ahmad Sakhla',
+      mockPanel: ['Wajed Afaneh', 'Mahdi Qawareeq', 'Mohammad Abu-Tami'],
       students: [
         ['', '', '', '', ''],
         ['', '', '', '', ''],
@@ -1310,9 +1326,6 @@
         ['', '', '', '', '']
       ]
     };
-
-    function saveRoster() { try { localStorage.setItem('faang_roster', JSON.stringify(ROSTER)); } catch (e) {} }
-    function loadRoster() { try { const d = localStorage.getItem('faang_roster'); if (d) { const p = JSON.parse(d); Object.keys(ROSTER).forEach(k => { if (p[k] !== undefined) ROSTER[k] = p[k]; }); } } catch (e) {} }
 
     function rInst(wk) { return ROSTER.instructors[wk.w - 1] || wk.instructor; }
     function rSunInst(wk) { return ROSTER.instructors[wk.w - 1] || wk.ia; }
@@ -1371,9 +1384,9 @@
       const days = [
         { d: 'Sunday', acc: 'var(--sun)', dk: 'var(--sun-dk)', items: [{ role: 'INSTRUCTOR', who: rSunInst(wk), what: 'Session + discussion · 2.5h', bg: 'var(--sun-bg)', c: 'var(--sun-dk)' }, { role: 'LAB TA ×2', who: rLabTA(0) + ' · ' + rLabTA(1), what: 'Guided lab · 90 min', bg: 'var(--mon-bg)', c: 'var(--mon-dk)' }] },
         { d: 'Monday', acc: 'var(--mon)', dk: 'var(--mon-dk)', items: [{ role: 'INSTRUCTOR', who: rMonInst(wk), what: 'Session + discussion · 2.5h', bg: 'var(--sun-bg)', c: 'var(--sun-dk)' }, { role: 'LAB TA ×2', who: rLabTA(0) + ' · ' + rLabTA(1), what: 'Guided lab · 90 min', bg: 'var(--mon-bg)', c: 'var(--mon-dk)' }] },
-        { d: 'Tuesday', acc: 'var(--tue)', dk: 'var(--tue-dk)', items: [{ role: 'GROUP TA ×5', who: [0,1,2,3,4].map(rGroupTA).join(' · '), what: 'Peer sprint · 90 min', bg: 'var(--tue-bg)', c: 'var(--tue-dk)' }, { role: 'LAB TA ×2', who: rLabTA(0) + ' · ' + rLabTA(1), what: 'Challenge lab · 90 min', bg: 'var(--mon-bg)', c: 'var(--mon-dk)' }] },
-        { d: 'Wednesday', acc: 'var(--wed)', dk: 'var(--wed-dk)', items: [{ role: 'GROUP TA ×5', who: [0,1,2,3,4].map(rGroupTA).join(' · '), what: 'Peer walkthrough · 90 min', bg: 'var(--wed-bg)', c: 'var(--wed-dk)' }, { role: 'GROUP TA ×5', who: [0,1,2,3,4].map(rGroupTA).join(' · '), what: 'Pressure lab · 90 min', bg: 'var(--wed-bg)', c: 'var(--wed-dk)' }] },
-        { d: 'Thursday', acc: 'var(--thu)', dk: 'var(--thu-dk)', items: [{ role: 'GROUP TA ×5', who: [0,1,2,3,4].map(rGroupTA).join(' · '), what: 'Coding mock + debrief', bg: 'var(--thu-bg)', c: 'var(--thu-dk)' }, { role: 'COORDINATOR', who: rCoord(), what: 'Behavioral session · 90 min', bg: 'var(--wed-bg)', c: 'var(--wed-dk)' }] },
+        { d: 'Tuesday', acc: 'var(--tue)', dk: 'var(--tue-dk)', items: [{ role: 'GROUP TA ×5', who: [0, 1, 2, 3, 4].map(rGroupTA).join(' · '), what: 'Peer sprint · 90 min', bg: 'var(--tue-bg)', c: 'var(--tue-dk)' }, { role: 'LAB TA ×2', who: rLabTA(0) + ' · ' + rLabTA(1), what: 'Challenge lab · 90 min', bg: 'var(--mon-bg)', c: 'var(--mon-dk)' }] },
+        { d: 'Wednesday', acc: 'var(--wed)', dk: 'var(--wed-dk)', items: [{ role: 'GROUP TA ×5', who: [0, 1, 2, 3, 4].map(rGroupTA).join(' · '), what: 'Peer walkthrough · 90 min', bg: 'var(--wed-bg)', c: 'var(--wed-dk)' }, { role: 'GROUP TA ×5', who: [0, 1, 2, 3, 4].map(rGroupTA).join(' · '), what: 'Pressure lab · 90 min', bg: 'var(--wed-bg)', c: 'var(--wed-dk)' }] },
+        { d: 'Thursday', acc: 'var(--thu)', dk: 'var(--thu-dk)', items: [{ role: 'GROUP TA ×5', who: [0, 1, 2, 3, 4].map(rGroupTA).join(' · '), what: 'Coding mock + debrief', bg: 'var(--thu-bg)', c: 'var(--thu-dk)' }, { role: 'COORDINATOR', who: rCoord(), what: 'Behavioral session · 90 min', bg: 'var(--wed-bg)', c: 'var(--wed-dk)' }] },
       ];
       return '<div class="dpane single" data-day="staff"><div style="margin-bottom:.75rem;padding:.6rem .875rem;background:var(--sun-bg);border-radius:var(--r);border:0.5px solid #AFA9EC"><div style="font-size:9px;font-weight:500;text-transform:uppercase;letter-spacing:.07em;color:var(--sun-dk);margin-bottom:2px">Week ' + wk.w + ' instructor</div><div style="font-size:13px;font-weight:500;color:var(--sun-dk)">' + rInst(wk) + '</div></div>'
         + days.map(sd => '<div class="staff-row"><div class="staff-day" style="color:' + sd.acc + '">' + sd.d + '</div><div class="staff-sessions">' + sd.items.map(it => '<div class="ss-item"><span class="role-tag" style="background:' + it.bg + ';color:' + it.c + '">' + it.role + '</span><div><div class="ss-title">' + it.who + '</div><div class="ss-sub">' + it.what + '</div></div></div>').join('') + '</div></div>').join('')
@@ -1437,10 +1450,11 @@
     function rCard(role, idx, label, meta, color) {
       const key = { coordinator: 'coordinator', groupTA: 'groupTAs', labTA: 'labTAs', instructor: 'instructors', principal: 'principal', mockPanel: 'mockPanel' }[role];
       const val = idx !== null ? ROSTER[key][idx] : ROSTER[key];
-      const da = 'data-rkey="' + key + '"' + (idx !== null ? ' data-ridx="' + idx + '"' : '');
+      const display = val ? escHtml(val) : '—';
+      const cls = val ? 'r-value' : 'r-value empty';
       return '<div class="r-card" style="border-left-color:' + color + '">'
         + '<div class="r-card-label" style="color:' + color + '">' + escHtml(label) + '</div>'
-        + '<input class="r-input" ' + da + ' value="' + escHtml(val) + '" placeholder="Enter name…">'
+        + '<div class="' + cls + '">' + display + '</div>'
         + '<div class="r-meta">' + escHtml(meta) + '</div>'
         + '</div>';
     }
@@ -1485,8 +1499,11 @@
         h += '<div class="r-student-list">';
         for (let s = 0; s < 5; s++) {
           const num = g * 5 + s + 1;
+          const name = ROSTER.students[g][s];
+          const display = name ? escHtml(name) : '—';
+          const cls = name ? 'r-value' : 'r-value empty';
           h += '<div class="r-student-row"><div class="r-student-num">' + String(num).padStart(2, '0') + '</div>'
-            + '<input class="r-input" data-rkey="students" data-rg="' + g + '" data-rs="' + s + '" value="' + escHtml(ROSTER.students[g][s]) + '" placeholder="Student name…">'
+            + '<div class="' + cls + '">' + display + '</div>'
             + '</div>';
         }
         h += '</div></div>';
@@ -1499,32 +1516,13 @@
       renderStudentRoster();
     }
 
-    document.addEventListener('input', function (e) {
-      const el = e.target;
-      if (!el.classList.contains('r-input')) return;
-      const key = el.dataset.rkey;
-      if (!key) return;
-      if (key === 'students') {
-        ROSTER.students[+el.dataset.rg][+el.dataset.rs] = el.value;
-      } else if (el.dataset.ridx !== undefined) {
-        ROSTER[key][+el.dataset.ridx] = el.value;
-      } else {
-        ROSTER[key] = el.value;
-      }
-      saveRoster();
-      // propagate instructor/coordinator/TA names into curriculum view
-      renderCurr();
-      // refresh student group headers if a TA name changed
-      if (key === 'groupTAs') renderStudentRoster();
-    });
-
     function updateNav() {
       let cur = '';
       document.querySelectorAll('section[id],[id^="week-"]').forEach(s => { if (s.getBoundingClientRect().top <= 100) cur = s.id; });
       document.querySelectorAll('.sb-link,.sb-week').forEach(l => l.classList.toggle('active', l.getAttribute('href').slice(1) === cur));
     }
     window.addEventListener('scroll', updateNav, { passive: true });
-    loadRoster(); renderPatterns(); renderDayStrip(); renderVolunteers(); renderRoster(); renderCurr(); renderSR(); renderTracker(); renderInstTable();
+    renderPatterns(); renderDayStrip(); renderVolunteers(); renderRoster(); renderCurr(); renderSR(); renderTracker(); renderInstTable();
   </script>
 </body>
 
