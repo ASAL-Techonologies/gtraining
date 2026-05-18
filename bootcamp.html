@@ -1,0 +1,1531 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>FAANG Bootcamp — 11-Week Program</title>
+  <link href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      background: #F5F5F7;
+      color: #0D0D0F;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      display: flex;
+      min-height: 100vh
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      line-height: 1.2;
+      color: #0D0D0F;
+      font-weight: 500
+    }
+
+    code,
+    .mono {
+      font-family: 'JetBrains Mono', ui-monospace, monospace
+    }
+
+    :root {
+      --bp: #FFFFFF;
+      --bs: #F5F5F7;
+      --bt: #EBEBEF;
+      --t1: #0D0D0F;
+      --t2: #5C5C6E;
+      --t3: #9090A4;
+      --bd: #E8E8EE;
+      --bd2: #D0D0DC;
+      --bd3: #B8B8CC;
+      --r: 8px;
+      --rl: 12px;
+      --sun: #7F77DD;
+      --sun-bg: #EEEDFE;
+      --sun-t: #534AB7;
+      --sun-dk: #3C3489;
+      --mon: #378ADD;
+      --mon-bg: #E6F1FB;
+      --mon-t: #185FA5;
+      --mon-dk: #0C447C;
+      --tue: #1D9E75;
+      --tue-bg: #E1F5EE;
+      --tue-t: #0F6E56;
+      --tue-dk: #085041;
+      --wed: #EF9F27;
+      --wed-bg: #FAEEDA;
+      --wed-t: #854F0B;
+      --wed-dk: #633806;
+      --thu: #D85A30;
+      --thu-bg: #FAECE7;
+      --thu-t: #993C1D;
+      --thu-dk: #712B13;
+      --ds-bg: #E6F1FB;
+      --ds-t: #0C447C;
+      --dp-bg: #EEEDFE;
+      --dp-t: #3C3489;
+      --sys-bg: #E1F5EE;
+      --sys-t: #085041;
+      --mock-bg: #FAECE7;
+      --mock-t: #712B13;
+    }
+
+    /* ── sidebar ── */
+    #sidebar {
+      width: 224px;
+      flex-shrink: 0;
+      background: var(--bp);
+      border-right: 0.5px solid var(--bd);
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+      padding-bottom: 2rem
+    }
+
+    .sb-brand {
+      padding: 1.25rem 1rem .875rem;
+      border-bottom: 0.5px solid var(--bd)
+    }
+
+    .sb-brand-name {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--t1)
+    }
+
+    .sb-brand-meta {
+      font-size: 11px;
+      color: var(--t3);
+      margin-top: 2px
+    }
+
+    .sb-grp {
+      padding: .5rem 0 .125rem
+    }
+
+    .sb-grp-label {
+      font-size: 10px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--t3);
+      padding: .375rem 1rem .125rem
+    }
+
+    .sb-link {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: .3rem 1rem;
+      font-size: 12px;
+      color: var(--t2);
+      text-decoration: none;
+      border-left: 2px solid transparent;
+      transition: all .12s
+    }
+
+    .sb-link i {
+      font-size: 14px;
+      color: var(--t3)
+    }
+
+    .sb-link:hover {
+      color: var(--t1);
+      background: var(--bs)
+    }
+
+    .sb-link.active {
+      color: var(--sun-dk);
+      background: var(--sun-bg);
+      border-left-color: var(--sun);
+      font-weight: 500
+    }
+
+    .sb-link.active i {
+      color: var(--sun-t)
+    }
+
+    .sb-week {
+      padding: .175rem 1rem .175rem 2rem;
+      font-size: 11px;
+      color: var(--t3);
+      text-decoration: none;
+      display: block;
+      line-height: 1.4;
+      transition: color .12s
+    }
+
+    .sb-week:hover {
+      color: var(--t2)
+    }
+
+    /* ── main ── */
+    #main {
+      flex: 1;
+      max-width: 960px;
+      padding: 2rem 2.5rem;
+      background: var(--bs)
+    }
+
+    /* ── sections ── */
+    .section {
+      margin-bottom: 3rem
+    }
+
+    .sec-eyebrow {
+      font-size: 10px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      color: var(--t3);
+      margin-bottom: .375rem
+    }
+
+    .sec-title {
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: var(--t1);
+      margin-bottom: .35rem
+    }
+
+    .sec-sub {
+      font-size: 13px;
+      color: var(--t2);
+      max-width: 560px;
+      line-height: 1.6
+    }
+
+    .divl {
+      height: 0.5px;
+      background: var(--bd);
+      margin: 2.5rem 0
+    }
+
+    /* ── hero ── */
+    #hero {
+      padding: 1.75rem 0 1.5rem;
+      border-bottom: 0.5px solid var(--bd);
+      margin-bottom: 1.75rem
+    }
+
+    .hero-kicker {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: .75rem
+    }
+
+    .hero-kicker-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--sun)
+    }
+
+    .hero-kicker-text {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--sun-dk)
+    }
+
+    .hero-title {
+      font-size: 2.25rem;
+      font-weight: 500;
+      line-height: 1.1;
+      margin-bottom: .6rem;
+      color: var(--t1)
+    }
+
+    .hero-title em {
+      font-style: normal;
+      color: var(--sun)
+    }
+
+    .hero-sub {
+      font-size: 13px;
+      color: var(--t2);
+      max-width: 540px;
+      line-height: 1.65;
+      margin-bottom: 1.25rem
+    }
+
+    /* ── stat cards (exact widget .sc pattern) ── */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+      margin-bottom: 1.5rem
+    }
+
+    .sc {
+      background: var(--bs);
+      border-radius: var(--r)
+    }
+
+    .sc-label {
+      font-size: 11px;
+      color: var(--t3);
+      margin-bottom: 3px;
+      padding: 10px 12px 0
+    }
+
+    .sc-val {
+      font-size: 22px;
+      font-weight: 500;
+      color: var(--t1);
+      padding: 0 12px
+    }
+
+    .sc-sub {
+      font-size: 11px;
+      color: var(--t2);
+      margin-top: 2px;
+      padding: 0 12px 10px
+    }
+
+    /* ── notice ── */
+    .notice {
+      background: var(--bp);
+      border: 0.5px solid var(--bd);
+      border-left: 3px solid var(--sun);
+      border-radius: 0 var(--r) var(--r) 0;
+      padding: .75rem 1rem;
+      font-size: 12px;
+      color: var(--t2);
+      line-height: 1.6;
+      margin-bottom: 1rem
+    }
+
+    .notice strong {
+      color: var(--t1)
+    }
+
+    /* ── dna grid ── */
+    .dna-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 1.25rem
+    }
+
+    .dna-card {
+      background: var(--bp);
+      border: 0.5px solid var(--bd);
+      border-radius: var(--rl);
+      padding: 1rem
+    }
+
+    .dna-from {
+      font-size: 10px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      margin-bottom: .4rem
+    }
+
+    .dna-title {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--t1);
+      margin-bottom: .4rem
+    }
+
+    .dna-item {
+      font-size: 12px;
+      color: var(--t2);
+      padding-left: .875rem;
+      position: relative;
+      margin-bottom: .2rem;
+      line-height: 1.5
+    }
+
+    .dna-item::before {
+      content: "\2192";
+      position: absolute;
+      left: 0;
+      color: var(--t3);
+      font-size: 11px
+    }
+
+    /* ── day strip ── */
+    .day-strip {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      border: 0.5px solid var(--bd);
+      border-radius: var(--rl);
+      overflow: hidden;
+      background: var(--bp)
+    }
+
+    .ds-col {
+      display: flex;
+      flex-direction: column;
+      border-right: 0.5px solid var(--bd)
+    }
+
+    .ds-col:last-child {
+      border-right: none
+    }
+
+    .ds-head {
+      padding: .6rem .75rem;
+      border-bottom: 0.5px solid var(--bd)
+    }
+
+    .ds-name {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--t1)
+    }
+
+    .ds-role {
+      font-size: 10px;
+      color: var(--t3);
+      margin-top: 1px
+    }
+
+    .ds-body {
+      padding: .6rem .75rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: .35rem
+    }
+
+    .s-pill {
+      font-size: 9px;
+      font-weight: 500;
+      padding: 2px 6px;
+      border-radius: 20px;
+      display: inline-block;
+      width: fit-content
+    }
+
+    .s-name {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--t1);
+      margin-top: 2px
+    }
+
+    .s-desc {
+      font-size: 10px;
+      color: var(--t3);
+      line-height: 1.35;
+      margin-top: 1px
+    }
+
+    .s-time {
+      font-size: 10px;
+      color: var(--t3);
+      margin-top: 2px
+    }
+
+    .s-div {
+      height: 0.5px;
+      background: var(--bd);
+      margin: 3px 0
+    }
+
+    .off-col {
+      background: var(--bs)
+    }
+
+    /* ── volunteer cards ── */
+    .vol-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px
+    }
+
+    .vol-card {
+      background: var(--bp);
+      border: 0.5px solid var(--bd);
+      border-radius: var(--rl);
+      padding: 1rem
+    }
+
+    .vol-count {
+      font-size: 1.75rem;
+      font-weight: 500;
+      margin-bottom: 2px
+    }
+
+    .vol-title {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--t1);
+      margin-bottom: .3rem
+    }
+
+    .vol-commit {
+      font-size: 11px;
+      color: var(--t2);
+      margin-bottom: .3rem
+    }
+
+    /* ── pattern grid (exact widget pat-card pattern) ── */
+    .pat-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px
+    }
+
+    .pat-card {
+      background: var(--bp);
+      border: 0.5px solid var(--bd);
+      border-left: 3px solid var(--sun);
+      border-radius: 0 var(--r) var(--r) 0;
+      padding: .65rem .875rem
+    }
+
+    .pat-num {
+      font-size: 10px;
+      color: var(--t3);
+      font-family: 'JetBrains Mono', monospace;
+      margin-bottom: 2px
+    }
+
+    .pat-name {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--t1);
+      margin-bottom: 2px
+    }
+
+    .pat-signal {
+      font-size: 11px;
+      color: var(--t2);
+      line-height: 1.4
+    }
+
+    /* ── week cards ── */
+    .week-card {
+      background: var(--bp);
+      border: 0.5px solid var(--bd);
+      border-radius: var(--rl);
+      margin-bottom: 8px;
+      overflow: hidden
+    }
+
+    .week-card:hover {
+      border-color: var(--bd2)
+    }
+
+    .wh {
+      display: grid;
+      grid-template-columns: 48px 44px 1fr 1fr 200px 36px;
+      align-items: stretch;
+      cursor: pointer
+    }
+
+    .wh:hover .wc {
+      background: var(--bs)
+    }
+
+    .wc {
+      padding: .75rem 1rem;
+      border-right: 0.5px solid var(--bd);
+      display: flex;
+      flex-direction: column;
+      justify-content: center
+    }
+
+    .wc:last-child {
+      border-right: none;
+      align-items: center
+    }
+
+    .wl {
+      font-size: 9px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      color: var(--t3);
+      margin-bottom: 2px
+    }
+
+    .wv {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--t1);
+      line-height: 1.3
+    }
+
+    .ws {
+      font-size: 11px;
+      color: var(--t2);
+      margin-top: 1px
+    }
+
+    .phase-b {
+      font-size: 9px;
+      font-weight: 500;
+      padding: 2px 7px;
+      border-radius: 20px;
+      display: inline-block;
+      margin-top: 3px
+    }
+
+    .chevron {
+      font-size: 16px;
+      color: var(--t3);
+      transition: transform .2s
+    }
+
+    .chevron.open {
+      transform: rotate(180deg)
+    }
+
+    /* ── week detail ── */
+    .wd {
+      display: none;
+      border-top: 0.5px solid var(--bd)
+    }
+
+    .wd.open {
+      display: block
+    }
+
+    .day-tabs {
+      display: flex;
+      border-bottom: 0.5px solid var(--bd);
+      background: var(--bs);
+      overflow-x: auto
+    }
+
+    .dt {
+      padding: .45rem .875rem;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--t3);
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      transition: all .12s;
+      white-space: nowrap;
+      flex-shrink: 0
+    }
+
+    .dt:hover {
+      color: var(--t2)
+    }
+
+    .dt.active {
+      color: var(--t1);
+      border-bottom-color: currentColor
+    }
+
+    .dpane {
+      display: none;
+      padding: 1.125rem 1.25rem
+    }
+
+    .dpane.active {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px
+    }
+
+    .dpane.single.active {
+      display: block
+    }
+
+    /* ── content blocks (exact widget .dp-block pattern) ── */
+    .db {
+      background: var(--bs);
+      border: 0.5px solid var(--bd);
+      border-radius: var(--r);
+      padding: .75rem .875rem;
+      margin-bottom: .6rem
+    }
+
+    .db-lbl {
+      font-size: 9px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      margin-bottom: .35rem
+    }
+
+    .db-text {
+      font-size: 12px;
+      color: var(--t2);
+      line-height: 1.6
+    }
+
+    .db-probs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .25rem;
+      margin-top: .35rem
+    }
+
+    .dp-tag {
+      font-size: 10px;
+      padding: 1px 7px;
+      border-radius: 20px;
+      background: var(--bp);
+      color: var(--t2);
+      border: 0.5px solid var(--bd)
+    }
+
+    .sr-bl {
+      background: var(--tue-bg);
+      border: 0.5px solid #9FE1CB;
+      border-radius: var(--r);
+      padding: .45rem .75rem;
+      margin-top: .45rem
+    }
+
+    .sr-lbl {
+      font-size: 9px;
+      font-weight: 500;
+      color: var(--tue-dk);
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      margin-bottom: 2px
+    }
+
+    .sr-text {
+      font-size: 11px;
+      color: var(--tue-dk)
+    }
+
+    .mock-bl {
+      background: var(--thu-bg);
+      border: 0.5px solid #F5C4B3;
+      border-radius: var(--r);
+      padding: .45rem .75rem;
+      margin-top: .45rem
+    }
+
+    .mock-lbl {
+      font-size: 9px;
+      font-weight: 500;
+      color: var(--thu-dk);
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      margin-bottom: 2px
+    }
+
+    .mock-text {
+      font-size: 11px;
+      color: var(--thu-dk)
+    }
+
+    .grind-bl {
+      background: var(--bs);
+      border: 0.5px solid var(--bd);
+      border-radius: var(--r);
+      padding: .45rem .75rem;
+      margin-top: .45rem;
+      font-size: 11px;
+      color: var(--t2)
+    }
+
+    .grind-lbl {
+      font-size: 9px;
+      font-weight: 500;
+      color: var(--t3);
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      margin-bottom: 2px
+    }
+
+    /* ── staffing pane ── */
+    .staff-row {
+      padding: 8px 0;
+      border-bottom: 0.5px solid var(--bd);
+      display: grid;
+      grid-template-columns: 76px 1fr;
+      gap: 10px;
+      align-items: start
+    }
+
+    .staff-row:last-child {
+      border-bottom: none
+    }
+
+    .staff-day {
+      font-size: 12px;
+      font-weight: 500
+    }
+
+    .staff-sessions {
+      display: flex;
+      flex-direction: column;
+      gap: 4px
+    }
+
+    .ss-item {
+      background: var(--bs);
+      border-radius: var(--r);
+      padding: 6px 8px;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px
+    }
+
+    .role-tag {
+      font-size: 9px;
+      font-weight: 500;
+      padding: 2px 7px;
+      border-radius: 20px;
+      white-space: nowrap;
+      flex-shrink: 0;
+      margin-top: 1px
+    }
+
+    .ss-title {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--t1)
+    }
+
+    .ss-sub {
+      font-size: 10px;
+      color: var(--t3);
+      margin-top: 1px
+    }
+
+    /* ── tables ── */
+    .sr-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 11px
+    }
+
+    .sr-table th {
+      background: var(--bs);
+      color: var(--t2);
+      padding: 6px 8px;
+      text-align: center;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: .05em;
+      border: 0.5px solid var(--bd)
+    }
+
+    .sr-table th:first-child {
+      text-align: left;
+      width: 172px
+    }
+
+    .sr-table td {
+      padding: 5px 8px;
+      border: 0.5px solid var(--bd);
+      text-align: center;
+      background: var(--bp)
+    }
+
+    .sr-table td:first-child {
+      text-align: left;
+      font-weight: 500;
+      color: var(--t1);
+      background: var(--bs)
+    }
+
+    .sr-dot {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      font-size: 9px;
+      font-weight: 600
+    }
+
+    .sr-n {
+      background: var(--sun-bg);
+      color: var(--sun-dk);
+      border: 0.5px solid #AFA9EC
+    }
+
+    .sr-r {
+      background: var(--tue-bg);
+      color: var(--tue-dk);
+      border: 0.5px solid #5DCAA5
+    }
+
+    .sr-m {
+      background: var(--thu-bg);
+      color: var(--thu-dk);
+      border: 0.5px solid #F09595
+    }
+
+    .sr-legend {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: .75rem;
+      font-size: 11px;
+      color: var(--t2)
+    }
+
+    .sr-legend span {
+      display: flex;
+      align-items: center;
+      gap: 5px
+    }
+
+    .tr-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px
+    }
+
+    .tr-table th {
+      background: var(--bs);
+      color: var(--t2);
+      padding: 7px 10px;
+      text-align: left;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: .06em;
+      border: 0.5px solid var(--bd)
+    }
+
+    .tr-table td {
+      padding: 7px 10px;
+      border: 0.5px solid var(--bd);
+      color: var(--t1)
+    }
+
+    .tr-table tr:nth-child(even) td {
+      background: var(--bs)
+    }
+
+    .tc {
+      font-weight: 500;
+      color: var(--mon-dk);
+      text-align: center
+    }
+
+    .tcc {
+      font-weight: 500;
+      color: var(--sun-t);
+      text-align: center
+    }
+
+    .tr-total td {
+      background: var(--bt) !important;
+      font-weight: 500;
+      border-top: 0.5px solid var(--bd2)
+    }
+
+    .inst-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px
+    }
+
+    .inst-table th {
+      background: var(--bs);
+      color: var(--t2);
+      padding: 7px 10px;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: .06em;
+      border: 0.5px solid var(--bd);
+      text-align: left
+    }
+
+    .inst-table td {
+      padding: 8px 10px;
+      border: 0.5px solid var(--bd);
+      color: var(--t1);
+      vertical-align: top;
+      line-height: 1.5
+    }
+
+    .inst-table tr:nth-child(even) td {
+      background: var(--bs)
+    }
+
+    /* ── roster ── */
+    .r-tabs {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 1rem
+    }
+
+    .r-tab {
+      padding: .35rem .875rem;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 500;
+      border: 0.5px solid var(--bd);
+      background: var(--bp);
+      color: var(--t2);
+      cursor: pointer;
+      transition: background .15s, color .15s
+    }
+
+    .r-tab.active {
+      background: var(--t1);
+      color: var(--bp);
+      border-color: var(--t1)
+    }
+
+    .r-pane { display: none }
+    .r-pane.active { display: block }
+
+    .rsec-hd {
+      font-size: 10px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      color: var(--t3);
+      margin: 1.25rem 0 .5rem
+    }
+
+    .rsec-hd:first-child { margin-top: 0 }
+
+    .rsec-hd span {
+      font-weight: 400;
+      letter-spacing: 0;
+      text-transform: none;
+      color: var(--t3);
+      margin-left: 4px
+    }
+
+    .r-grid {
+      display: grid;
+      gap: 8px
+    }
+
+    .r-g1 { grid-template-columns: 1fr }
+    .r-g2 { grid-template-columns: repeat(2, 1fr) }
+    .r-g3 { grid-template-columns: repeat(3, 1fr) }
+    .r-g4 { grid-template-columns: repeat(4, 1fr) }
+    .r-g5 { grid-template-columns: repeat(5, 1fr) }
+
+    .r-card {
+      background: var(--bp);
+      border: 0.5px solid var(--bd);
+      border-radius: var(--rl);
+      padding: .75rem;
+      border-left-width: 3px
+    }
+
+    .r-card-label {
+      font-size: 10px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      margin-bottom: .4rem
+    }
+
+    .r-input {
+      width: 100%;
+      border: 0.5px solid var(--bd);
+      border-radius: var(--r);
+      padding: .4rem .6rem;
+      font-size: 13px;
+      font-family: inherit;
+      color: var(--t1);
+      background: var(--bs);
+      outline: none;
+      margin-bottom: .3rem
+    }
+
+    .r-input:focus {
+      border-color: var(--mon);
+      background: var(--bp)
+    }
+
+    .r-input::placeholder { color: var(--t3) }
+
+    .r-meta {
+      font-size: 10px;
+      color: var(--t3);
+      line-height: 1.4
+    }
+
+    .r-group-card {
+      background: var(--bp);
+      border: 0.5px solid var(--bd);
+      border-radius: var(--rl);
+      overflow: hidden;
+      margin-bottom: 8px
+    }
+
+    .r-group-hd {
+      padding: .55rem .875rem;
+      background: var(--bs);
+      border-bottom: 0.5px solid var(--bd);
+      display: flex;
+      justify-content: space-between;
+      align-items: center
+    }
+
+    .r-group-title {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--t1)
+    }
+
+    .r-group-ta {
+      font-size: 11px;
+      color: var(--t3)
+    }
+
+    .r-student-list {
+      padding: .6rem .875rem;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 6px
+    }
+
+    .r-student-row {
+      display: flex;
+      align-items: center;
+      gap: 5px
+    }
+
+    .r-student-num {
+      font-size: 10px;
+      color: var(--t3);
+      font-family: 'JetBrains Mono', monospace;
+      min-width: 20px;
+      text-align: right
+    }
+  </style>
+</head>
+
+<body>
+  <aside id="sidebar">
+    <div class="sb-brand">
+      <div class="sb-brand-name">FAANG Bootcamp</div>
+      <div class="sb-brand-meta">11 weeks · 35h/week · Sun–Thu</div>
+    </div>
+    <div class="sb-grp">
+      <div class="sb-grp-label">Program</div>
+      <a class="sb-link active" href="#overview"><i class="ti ti-home" aria-hidden="true"></i> Overview</a>
+      <a class="sb-link" href="#patterns"><i class="ti ti-puzzle" aria-hidden="true"></i> 20 Patterns</a>
+      <a class="sb-link" href="#daily"><i class="ti ti-calendar-week" aria-hidden="true"></i> Daily structure</a>
+      <a class="sb-link" href="#volunteers"><i class="ti ti-users" aria-hidden="true"></i> Volunteers (24)</a>
+      <a class="sb-link" href="#roster"><i class="ti ti-id-badge-2" aria-hidden="true"></i> Roster</a>
+    </div>
+    <div class="sb-grp">
+      <div class="sb-grp-label">Curriculum</div>
+      <a class="sb-link" href="#curriculum"><i class="ti ti-list" aria-hidden="true"></i> All 11 weeks</a>
+      <a class="sb-week" href="#week-1">W1 · Two Pointers + Prefix Sum</a>
+      <a class="sb-week" href="#week-2">W2 · Sliding Window + Bit Manip.</a>
+      <a class="sb-week" href="#week-3">W3 · LL Reversal + Fast &amp; Slow</a>
+      <a class="sb-week" href="#week-4">W4 · Binary Search + Greedy</a>
+      <a class="sb-week" href="#week-5">W5 · Tree BFS + Tree DFS</a>
+      <a class="sb-week" href="#week-6">W6 · Trie + Backtracking</a>
+      <a class="sb-week" href="#week-7">W7 · Graphs + Union Find</a>
+      <a class="sb-week" href="#week-8">W8 · Topo Sort + DP 1D</a>
+      <a class="sb-week" href="#week-9">W9 · DP Subsequence + DP 2D</a>
+      <a class="sb-week" href="#week-10">W10 · Heaps + System Design</a>
+      <a class="sb-week" href="#week-11">W11 · Final + Mock Capstone</a>
+    </div>
+    <div class="sb-grp">
+      <div class="sb-grp-label">Reference</div>
+      <a class="sb-link" href="#spaced-rep"><i class="ti ti-arrows-right-left" aria-hidden="true"></i> Spaced
+        repetition</a>
+      <a class="sb-link" href="#tracker"><i class="ti ti-chart-bar" aria-hidden="true"></i> Problem tracker</a>
+      <a class="sb-link" href="#inst-guide"><i class="ti ti-school" aria-hidden="true"></i> Instructor guide</a>
+    </div>
+  </aside>
+  <main id="main">
+    <section id="overview" class="section">
+      <div id="hero">
+        <div class="hero-kicker"><span class="hero-kicker-dot"></span><span class="hero-kicker-text">20 patterns · ~96%
+            FAANG coverage · 24 volunteers · 5:1 student-TA ratio</span></div>
+        <h1 class="hero-title">11-Week <em>FAANG</em> Interview Bootcamp</h1>
+        <p class="hero-sub">Pattern-based, spaced-repetition-driven, 35h/week. One dedicated group TA per 5 students.
+          One fresh instructor per week. Every Thursday is a mock interview day.</p>
+        <div class="stats-row">
+          <div class="sc">
+            <div class="sc-label">Total hours</div>
+            <div class="sc-val">385h</div>
+            <div class="sc-sub">11 weeks × 35h</div>
+          </div>
+          <div class="sc">
+            <div class="sc-label">Patterns</div>
+            <div class="sc-val">20</div>
+            <div class="sc-sub">~96% FAANG coverage</div>
+          </div>
+          <div class="sc">
+            <div class="sc-label">Problems</div>
+            <div class="sc-val">200+</div>
+            <div class="sc-sub">LeetCode target</div>
+          </div>
+          <div class="sc">
+            <div class="sc-label">Mock interviews</div>
+            <div class="sc-val">40+</div>
+            <div class="sc-sub">every Thursday W1+</div>
+          </div>
+          <div class="sc">
+            <div class="sc-label">Student-TA ratio</div>
+            <div class="sc-val">5:1</div>
+            <div class="sc-sub">one group TA per 5</div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="patterns" class="section">
+      <div class="sec-eyebrow">Foundations</div>
+      <p class="sec-sub">Each is a reusable template applied when you recognise the problem shape.</p>
+      <div class="pat-grid" id="pat-grid" style="margin-top:1rem"></div>
+    </section>
+
+    <div class="divl"></div>
+    <section id="daily" class="section">
+      <div class="sec-eyebrow">Structure</div>
+      <h2 class="sec-title">Daily structure</h2>
+      <p class="sec-sub">Every week follows the same 5-day template. Sun–Thu active. Fri–Sat rest.</p>
+      <div class="day-strip" id="day-strip" style="margin-top:1rem"></div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:.875rem">
+        <div style="background:var(--sun-bg);border:0.5px solid #AFA9EC;border-radius:var(--rl);padding:.875rem 1rem">
+          <div
+            style="font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.07em;color:var(--sun-dk);margin-bottom:.35rem">
+            Instructor · Sun + Mon</div>
+          <div style="font-size:13px;font-weight:500;color:var(--sun-dk);margin-bottom:.25rem">5h on-site · 1 week only
+          </div>
+          <div style="font-size:12px;color:var(--sun-t)">Session + discussion both days. Hands off to the next
+            instructor after their week.</div>
+        </div>
+        <div style="background:var(--tue-bg);border:0.5px solid #5DCAA5;border-radius:var(--rl);padding:.875rem 1rem">
+          <div
+            style="font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.07em;color:var(--tue-dk);margin-bottom:.35rem">
+            Group TAs ×5 · Tue + Wed + Thu</div>
+          <div style="font-size:13px;font-weight:500;color:var(--tue-dk);margin-bottom:.25rem">4.5h/week · All 11 weeks
+          </div>
+          <div style="font-size:12px;color:var(--tue-t)">Each TA owns one group of 5 students. Peer sprints, peer
+            walkthrough, Thursday mock interviewer.</div>
+        </div>
+        <div style="background:var(--mon-bg);border:0.5px solid #85B7EB;border-radius:var(--rl);padding:.875rem 1rem">
+          <div
+            style="font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.07em;color:var(--mon-dk);margin-bottom:.35rem">
+            Lab TAs ×2 · Mon + Tue</div>
+          <div style="font-size:13px;font-weight:500;color:var(--mon-dk);margin-bottom:.25rem">3h/week · All 11 weeks
+          </div>
+          <div style="font-size:12px;color:var(--mon-t)">Monday guided lab + Tuesday challenge lab for all 25 students.
+            Circulate, unblock, never re-lecture.</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divl"></div>
+    <section id="volunteers" class="section">
+      <div class="sec-eyebrow">Staffing</div>
+      <h2 class="sec-title">24 volunteers</h2>
+      <p class="sec-sub">One instructor per week. One group TA per 5 students.</p>
+      <div class="vol-grid" id="vol-grid" style="margin-top:1rem"></div>
+      <div class="notice" style="margin-top:1rem"><strong>Key recruiting insight:</strong> asking someone to teach for
+        one week (5h on-site + 2–3h prep) is a fundamentally different ask from committing for months. The per-week
+        model makes recruiting 11 instructors easier than finding 3–4 long-commitment ones.</div>
+    </section>
+
+    <div class="divl"></div>
+    <section id="roster" class="section">
+      <div class="sec-eyebrow">People</div>
+      <h2 class="sec-title">Roster</h2>
+      <p class="sec-sub">Fill in names — they propagate live into the curriculum and staffing views. Saved automatically in your browser.</p>
+      <div class="r-tabs" id="r-tabs" style="margin-top:1rem">
+        <button class="r-tab active" onclick="switchRosterTab('volunteers')">Volunteers</button>
+        <button class="r-tab" onclick="switchRosterTab('students')">Students</button>
+      </div>
+      <div id="r-volunteers" class="r-pane active"></div>
+      <div id="r-students" class="r-pane"></div>
+    </section>
+
+    <div class="divl"></div>
+    <section id="curriculum" class="section">
+      <div class="sec-eyebrow">Curriculum</div>
+      <h2 class="sec-title">11-week schedule</h2>
+      <p class="sec-sub">Click any week to expand. The <strong>Staffing</strong> tab shows exactly who is present each
+        day and what they do.</p>
+      <div id="curr-container" style="margin-top:1rem"></div>
+    </section>
+
+    <div class="divl"></div>
+    <section id="spaced-rep" class="section">
+      <div class="sec-eyebrow">Spaced repetition</div>
+      <h2 class="sec-title">Pattern revisit map</h2>
+      <p class="sec-sub">Every pattern introduced once and revisited at least 3 times in later weeks.</p>
+      <div class="sr-legend" style="margin-top:1rem">
+        <span><span class="sr-dot sr-n">N</span> First introduced</span>
+        <span><span class="sr-dot sr-r">R</span> Revisited in lab/peer sprint</span>
+        <span><span class="sr-dot sr-m">M</span> Appears in Thursday mock</span>
+      </div>
+      <div style="overflow-x:auto">
+        <table class="sr-table" id="sr-table"></table>
+      </div>
+    </section>
+
+    <div class="divl"></div>
+    <section id="tracker" class="section">
+      <div class="sec-eyebrow">Progress</div>
+      <h2 class="sec-title">Problem tracker</h2>
+      <p class="sec-sub">Target 200+ problems across 11 weeks.</p>
+      <div style="overflow-x:auto;margin-top:1rem">
+        <table class="tr-table" id="tr-table"></table>
+      </div>
+    </section>
+
+    <div class="divl"></div>
+    <section id="inst-guide" class="section">
+      <div class="sec-eyebrow">Reference</div>
+      <h2 class="sec-title">Instructor &amp; TA guide</h2>
+      <div style="overflow-x:auto;margin-top:1rem">
+        <table class="inst-table" id="inst-table"></table>
+      </div>
+    </section>
+
+  </main>
+  <script>
+    const ROSTER = {
+      coordinator: '',
+      groupTAs: ['', '', '', '', ''],
+      labTAs: ['', ''],
+      instructors: ['', '', '', '', '', '', '', '', '', '', ''],
+      principal: '',
+      mockPanel: ['', '', ''],
+      students: [
+        ['', '', '', '', ''],
+        ['', '', '', '', ''],
+        ['', '', '', '', ''],
+        ['', '', '', '', ''],
+        ['', '', '', '', '']
+      ]
+    };
+
+    function saveRoster() { try { localStorage.setItem('faang_roster', JSON.stringify(ROSTER)); } catch (e) {} }
+    function loadRoster() { try { const d = localStorage.getItem('faang_roster'); if (d) { const p = JSON.parse(d); Object.keys(ROSTER).forEach(k => { if (p[k] !== undefined) ROSTER[k] = p[k]; }); } } catch (e) {} }
+
+    function rInst(wk) { return ROSTER.instructors[wk.w - 1] || wk.instructor; }
+    function rSunInst(wk) { return ROSTER.instructors[wk.w - 1] || wk.ia; }
+    function rMonInst(wk) { if (wk.ib === 'Staff / Principal Engineer') return ROSTER.principal || wk.ib; return ROSTER.instructors[wk.w - 1] || wk.ib; }
+    function rCoord() { return ROSTER.coordinator || 'Program Coordinator'; }
+    function rGroupTA(i) { return ROSTER.groupTAs[i] || ('Group TA ' + (i + 1)); }
+    function rLabTA(i) { return ROSTER.labTAs[i] || ('Lab TA ' + (i + 1)); }
+    function rMockPanel(i) { return ROSTER.mockPanel[i] || ('Mock Panelist ' + (i + 1)); }
+    function escHtml(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
+
+    const WEEKS = [{ "w": 1, "phase": "DS&A", "isnew": false, "pa": "Two Pointers", "pb": "Prefix Sum", "instructor": "Arrays specialist", "ia": "DS&A Specialist A", "ib": "DS&A Specialist A", "sun": { "session": "Two pointers template: opposite ends AND same direction. Trace 3Sum on whiteboard \u2014 O(n\u00b2) brute force becomes O(n). Opens with 5-min think-aloud warm-up.", "disc": "Code autopsy: buggy two-pointer with an off-by-one. Students find, fix, and generalise.", "lab": "Two Sum (sorted), 3Sum, Container with Most Water, Remove Duplicates from Sorted Array.", "grind": "LeetCode: Two Pointers tag. Target 12 problems.", "sr": "Week 1 \u2014 no prior patterns. Warm-up: re-solve Two Sum three ways, timed 8 min." }, "mon": { "session": "Prefix sum template: prefix[i] = sum of arr[0..i]. Range query [i,j] = prefix[j] \u2212 prefix[i\u22121] in O(1). Most commonly missed pattern in FAANG screens.", "disc": "Think-pair-share: without prefix sum, 10k range queries on a 1M array \u2014 how long? With it?", "lab": "Subarray Sum Equals K, Product of Array Except Self, Range Sum Query, Contiguous Array.", "grind": "LeetCode: Prefix Sum tag. Target 8 problems.", "sr": "No prior patterns \u2014 grind both patterns together." }, "tue": { "sr": "Warm-up: re-solve Two Sum with two pointers (3 min). Prefix Sum: Running Sum of 1D Array.", "challenge": "Harder: 3Sum Closest, 4Sum, Dutch National Flag. Prefix Sum: Minimum Size Subarray Sum.", "grind": "3 Two Pointers hard + 2 Prefix Sum medium." }, "wed": { "peer": "Groups present Monday lab. TA focus: could any of these use prefix sum more elegantly?", "pressure": "Timed: one Two Pointers + one Prefix Sum \u2014 20 min each.", "grind": "Rewrite every hinted problem without hints." }, "thu": { "mock": "Coding mock: Longest Substring with At Most K Distinct Characters (medium, 25 min). Think-aloud required.", "behavioral": "STAR story writing: each student drafts 3 stories \u2014 challenge, failure, collaboration. Peer review for specificity.", "review": "Verify problem count. Target: 22 this week." }, "target": 22, "cum": 22 }, { "w": 2, "phase": "DS&A", "isnew": true, "pa": "Sliding Window", "pb": "Bit Manipulation", "instructor": "Arrays / bits specialist", "ia": "DS&A Specialist A", "ib": "DS&A Specialist A", "sun": { "session": "Sliding window template: fixed size, then variable size. Visualise the window expanding and contracting. Pattern ID: contiguous subarray/substring + optimise = sliding window.", "disc": "Think-pair-share: when would you use sliding window instead of two pointers? Argue the reasoning.", "lab": "Longest Substring Without Repeating Chars, Minimum Window Substring, Permutation in String, Fruit Into Baskets.", "grind": "LeetCode: Sliding Window. Target 10 problems.", "sr": "Spaced rep: Two Pointers \u2014 3Sum (3 min, no hints)." }, "mon": { "session": "Bit manipulation: AND, OR, XOR, NOT, shift, bitmask. The 6 tricks. XOR key: a^a=0, a^0=a. Pattern ID: duplicates/missing numbers, toggling bits = bit manipulation. Amazon tests this heavily.", "disc": "Worst-case: solve Single Number without extra space in O(n). Students try first. Then XOR solution.", "lab": "Single Number, Missing Number, Counting Bits, Reverse Bits, Power of Two.", "grind": "LeetCode: Bit Manipulation. Target 8 problems.", "sr": "Spaced rep: Prefix Sum \u2014 Subarray Sum Equals K variant (3 min)." }, "tue": { "sr": "Two Pointers: 3Sum Closest. Sliding Window: Max Sliding Window.", "challenge": "Sliding Window hard: Minimum Window Substring variant. Bit: Sum of Two Integers.", "grind": "2 Sliding Window hard + 2 Bit Manipulation medium." }, "wed": { "peer": "Groups present Monday lab. TA: can they explain WHY XOR works?", "pressure": "Timed: one Sliding Window + one Bit Manipulation \u2014 20 min each.", "grind": "Rewrite hinted problems. XOR template from memory." }, "thu": { "mock": "Coding mock: medium sliding window (25 min). Focus: articulate approach before writing code.", "behavioral": "STAR practice: each student delivers one story out loud. Peer scores specificity 1\u20135.", "review": "On track for 20 problems this week?" }, "target": 20, "cum": 42 }, { "w": 3, "phase": "DS&A", "isnew": true, "pa": "In-place LL Reversal", "pb": "Fast & Slow Pointers", "instructor": "Linked list specialist", "ia": "DS&A Specialist A", "ib": "DS&A Specialist A", "sun": { "session": "In-place reversal: prev=null, curr=head. At each step: store next, point curr.next to prev, advance both. Trace pointer-by-pointer. Pattern ID: reverse a linked list or sublist in place.", "disc": "Code autopsy: buggy reversal that loses nodes. Students identify exactly where the pointer chain breaks.", "lab": "Reverse Linked List, Reverse Linked List II, Reverse Nodes in K-Group, Swap Pairs.", "grind": "LeetCode: Linked List reversal. Target 10 problems.", "sr": "Spaced rep: Sliding Window \u2014 Longest Repeating Character Replacement." }, "mon": { "session": "Fast pointer moves 2 steps, slow moves 1. Cycle detection, middle of linked list, palindrome. Pattern ID: linked list + cycle/position = fast & slow. Distinct from reversal.", "disc": "Explain-it-to-a-junior: one student explains Floyd's cycle detection as if audience has never heard of pointers.", "lab": "Linked List Cycle, Happy Number, Middle of Linked List, Palindrome Linked List.", "grind": "LeetCode: Linked List Cycle / Fast-Slow. Target 8 problems.", "sr": "Spaced rep: Bit Manipulation \u2014 Find the Difference (XOR trick, 2 min)." }, "tue": { "sr": "Prefix Sum warm-up. Two Pointers: Trapping Rain Water.", "challenge": "LL Reversal hard: Reverse Nodes in K-Group. Fast & Slow: Find Duplicate Number.", "grind": "2 prior patterns + 2 linked list problems." }, "wed": { "peer": "Groups present both linked list solutions. TA: what is the difference in what these two patterns solve?", "pressure": "Timed: 1 Reversal + 1 Fast & Slow \u2014 20 min each.", "grind": "Rewrite hinted problems. Draw pointer diagrams before code." }, "thu": { "mock": "Coding mock: medium linked list problem. Must draw pointer state before coding.", "behavioral": "Behavioral: tell me about a time you had to learn something quickly.", "review": "Draw Reverse Linked List from memory under 2 min." }, "target": 20, "cum": 62 }, { "w": 4, "phase": "DS&A", "isnew": true, "pa": "Modified Binary Search", "pb": "Greedy", "instructor": "Search & greedy specialist", "ia": "DS&A Specialist B", "ib": "DS&A Specialist B", "sun": { "session": "Binary search: eliminate half the search space each step. Modified forms: rotated array, answer space (Koko Eating Bananas), 2D matrix. Pattern ID: sorted + find = binary search, even when non-obvious.", "disc": "Worst-case challenge: give me an input that breaks naive binary search. Students compete.", "lab": "Search in Rotated Sorted Array, Find Peak Element, Koko Eating Bananas, Find Minimum in Rotated Array.", "grind": "LeetCode: Binary Search. Target 10 problems. Google list emphasis.", "sr": "Spaced rep: In-place LL Reversal \u2014 Reverse Linked List II warm-up." }, "mon": { "session": "Greedy: make the locally optimal choice at each step and prove global optimum follows. Contrast with DP: coin change breaks greedy, jump game works. Pattern ID: can I always make the best local choice?", "disc": "Design debate: Jump Game \u2014 why does greedy work here? What change to the problem would make it fail?", "lab": "Jump Game, Jump Game II, Gas Station, Task Scheduler, Non-overlapping Intervals.", "grind": "LeetCode: Greedy. Target 8 problems.", "sr": "Spaced rep: Fast & Slow \u2014 Happy Number (2 min)." }, "tue": { "sr": "Binary Search: Search a 2D Matrix. Sliding Window: Minimum Window Substring.", "challenge": "Binary Search hard: Find in Mountain Array. Greedy: Minimum Arrows to Burst Balloons.", "grind": "2 prior patterns + 2 current problems." }, "wed": { "peer": "Groups present greedy solutions. TA: can they state the greedy invariant in one sentence?", "pressure": "Timed: 1 Binary Search + 1 Greedy \u2014 20 min each.", "grind": "Rewrite hinted problems." }, "thu": { "mock": "Coding mock: medium binary search on answer space. Debrief: how did you recognise it was binary search?", "behavioral": "Behavioral: describe a conflict and how you resolved it.", "review": "Pattern ID sprint: 5 descriptions, classify to pattern, 30 sec each." }, "target": 18, "cum": 80 }, { "w": 5, "phase": "DS&A", "isnew": false, "pa": "Tree BFS", "pb": "Tree DFS", "instructor": "Trees specialist", "ia": "DS&A Specialist B", "ib": "DS&A Specialist B", "sun": { "session": "BFS uses a queue \u2014 process level by level. Template: while queue not empty, pop node, push children. Pattern ID: level-by-level / shortest path / level averages = BFS.", "disc": "Design debate: BFS vs DFS for serialising a binary tree. Must argue trade-offs: time, space, reconstructability.", "lab": "Binary Tree Level Order Traversal, ZigZag Level Order, Average of Levels, Minimum Depth.", "grind": "LeetCode: Tree BFS. Target 10 problems.", "sr": "Spaced rep: Prefix Sum \u2014 Range Sum Query. LL Reversal \u2014 Reverse in K-Group attempt." }, "mon": { "session": "DFS traces the call stack. Template: recurse left, recurse right, return combination. Pre/in/post-order. Pattern ID: path sum / validate BST / max depth = DFS.", "disc": "Code autopsy: DFS solution that works on most trees but silently fails on one edge case.", "lab": "Max Depth of Binary Tree, Path Sum II, Validate BST, Flatten Binary Tree to Linked List.", "grind": "LeetCode: Tree DFS. Target 10 problems.", "sr": "Spaced rep: Modified Binary Search \u2014 Search in Rotated Array II." }, "tue": { "sr": "Tree BFS: Binary Tree Right Side View. Fast & Slow: Middle of Linked List.", "challenge": "Tree hard: Binary Tree Max Path Sum, Serialize and Deserialize Binary Tree.", "grind": "2 prior patterns + 2 tree problems." }, "wed": { "peer": "Groups present DFS solutions. TA: did they trace the call stack before coding?", "pressure": "Timed: 1 Tree BFS + 1 Tree DFS \u2014 20 min each.", "grind": "Rewrite hinted problems. Both templates from memory." }, "thu": { "mock": "Coding mock: medium tree problem. Debrief: what did you say out loud when stuck?", "behavioral": "Behavioral: tell me about a time you learned something quickly.", "review": "Both tree templates from memory in under 2 min?" }, "target": 20, "cum": 100 }, { "w": 6, "phase": "DS&A", "isnew": true, "pa": "Trie (Prefix Tree)", "pb": "Backtracking", "instructor": "Trie & backtracking specialist", "ia": "DS&A Specialist B", "ib": "DS&A Specialist C", "sun": { "session": "Trie = tree where each node is a character. TrieNode: children dict + is_end flag. Insert/Search: O(m). Pattern ID: prefix matching / autocomplete / word dictionary = Trie.", "disc": "Real-world connection: where does Trie exist in products you use? Google search, IDE autocomplete, DNS. Must justify.", "lab": "Implement Trie, Design Add and Search Words, Search Suggestions System, Longest Common Prefix.", "grind": "LeetCode: Trie. Target 10 problems. Google/Meta list emphasis.", "sr": "Spaced rep: Two Pointers \u2014 3Sum (5 min timed)." }, "mon": { "session": "Backtracking template: choose \u2192 explore \u2192 unchoose. Recursion tree IS the answer space. Pruning = eliminating branches early. Pattern ID: generate ALL valid solutions = backtracking. Word Search II uses Trie + backtracking.", "disc": "Classification: 5 problems. Vote \u2014 DP or backtracking? Then: could you solve with both? What is the trade-off?", "lab": "Generate Parentheses, Permutations, Subsets, Combination Sum, Word Search.", "grind": "LeetCode: Backtracking. Target 10 problems.", "sr": "Spaced rep: Fast & Slow \u2014 Find Duplicate Number. Greedy \u2014 Jump Game II." }, "tue": { "sr": "Trie: Word Search II (Trie + backtracking \u2014 canonical hard problem). Bit Manipulation: Sum of Two Integers.", "challenge": "Trie hard: Word Search II. Backtracking hard: N-Queens.", "grind": "2 prior patterns + 2 current problems." }, "wed": { "peer": "Groups present Trie implementation. TA: can they explain why Trie beats hashset for prefix queries?", "pressure": "Timed: 1 Trie + 1 Backtracking \u2014 20 min each.", "grind": "Rewrite hinted problems. Build Trie from memory." }, "thu": { "mock": "Coding mock: medium \u2014 either Trie or Backtracking chosen randomly.", "behavioral": "Behavioral: give an example of a decision you made under uncertainty.", "review": "Can you implement a basic Trie from memory in 5 minutes?" }, "target": 18, "cum": 118 }, { "w": 7, "phase": "DS&A", "isnew": true, "pa": "Graph BFS/DFS", "pb": "Union Find", "instructor": "Graph specialist", "ia": "DS&A Specialist C", "ib": "DS&A Specialist C", "sun": { "session": "A tree is just a graph with no cycles. Adjacency list. BFS for shortest path, DFS for connectivity. Template: visited set + queue/stack. Pattern ID: grid / connections / reachability = graph. RULE: always draw the graph before coding.", "disc": "Real-world connection: where does graph BFS exist in an app you use daily? Facebook friends, Google Maps, package dependencies.", "lab": "Number of Islands, Clone Graph, Course Schedule (cycle detection), Pacific Atlantic Water Flow.", "grind": "LeetCode: Graphs. Target 10 problems. Amazon list emphasis.", "sr": "Spaced rep: Tree DFS \u2014 Path Sum II. Trie warm-up \u2014 Longest Common Prefix." }, "mon": { "session": "Union Find: find (which group?) + union (merge groups). Path compression makes find near-O(1). Pattern ID: dynamic connectivity / grouping with merging = Union Find. Difference from BFS/DFS: Union Find handles INCREMENTAL connectivity.", "disc": "Classification: 3 problems. Vote \u2014 graph BFS, graph DFS, or Union Find? Key tell: connections given all at once vs added incrementally.", "lab": "Number of Connected Components, Redundant Connection, Accounts Merge, Most Stones Removed.", "grind": "LeetCode: Union Find. Target 8 problems.", "sr": "Spaced rep: Bit Manipulation \u2014 Find Missing Number. Backtracking \u2014 Combination Sum II." }, "tue": { "sr": "Graph BFS: Word Ladder. Greedy: Task Scheduler.", "challenge": "Graph hard: Alien Dictionary. Union Find: Satisfiability of Equality Equations.", "grind": "2 prior patterns + 2 current problems." }, "wed": { "peer": "Groups compare Graph DFS vs Union Find for connected components. Same answer, different approach \u2014 when does each win?", "pressure": "Timed: 1 Graph + 1 Union Find \u2014 20 min each.", "grind": "Rewrite hinted problems. Union Find with path compression from memory." }, "thu": { "mock": "Coding mock: medium graph + one easy prior-pattern, 45 min total.", "behavioral": "Behavioral: describe a conflict and how you resolved it.", "review": "Mid-program: 118+ problems total? Pattern ID drill \u2014 5 problems, 30 sec each." }, "target": 18, "cum": 136 }, { "w": 8, "phase": "DP", "isnew": false, "pa": "Topological Sort", "pb": "DP \u2014 1D Patterns", "instructor": "Topo sort & DP specialist", "ia": "DS&A Specialist C", "ib": "DS&A Specialist C", "sun": { "session": "Topological sort: ordering nodes with dependencies. Kahn's BFS-based + DFS-based. Pattern ID: dependency ordering / scheduling / build systems = topological sort. Key shape: directed acyclic graph.", "disc": "Classification drill: 5 problems. Vote \u2014 graph BFS, DFS, topological sort, or Union Find? The distinctions between all four are the lesson.", "lab": "Alien Dictionary, Course Schedule II, Minimum Height Trees, Find All Ancestors in DAG.", "grind": "LeetCode: Topological Sort. Target 8 problems.", "sr": "Spaced rep: Graph BFS/DFS \u2014 Course Schedule. Union Find \u2014 Redundant Connection." }, "mon": { "session": "DP is recursion with memory. Top-down: memoisation. Bottom-up: tabulation. 3 questions: subproblems? Overlap? Optimal substructure? Pattern ID: optimise a value across choices = DP. Draw recursion tree \u2014 show repeated calls.", "disc": "Worst-case reversed: construct the smallest input where brute force provably breaks. Build the minimal counter-example.", "lab": "Climbing Stairs, House Robber, Coin Change, Decode Ways.", "grind": "LeetCode: DP 1D. Target 8 problems. Write recurrence before code.", "sr": "Spaced rep: Tree BFS \u2014 Binary Tree Level Order. Modified Binary Search \u2014 Koko Eating Bananas." }, "tue": { "sr": "Topological sort: Parallel Courses. DP 1D: Climbing Stairs from memory (2 min).", "challenge": "Topological hard: Alien Dictionary. DP 1D hard: Regular Expression Matching.", "grind": "2 prior patterns + 2 current problems." }, "wed": { "peer": "Groups explain DP 1D recurrence for Coin Change out loud. TA: one sentence?", "pressure": "Timed: 1 Topological Sort + 1 DP 1D \u2014 25 min each.", "grind": "Rewrite hinted DP problems. Recurrence FIRST, code second." }, "thu": { "mock": "Coding mock: medium DP. Many will struggle \u2014 normalise this. Debrief: how do you progress when you don't know the approach?", "behavioral": "Behavioral: tell me about a time you failed and what you learned.", "review": "DP self-audit: can you state the recurrence for each problem solved this week?" }, "target": 16, "cum": 152 }, { "w": 9, "phase": "DP", "isnew": false, "pa": "DP \u2014 Subsequence/Interval", "pb": "DP \u2014 2D & Advanced", "instructor": "DP advanced specialist", "ia": "DS&A Specialist C", "ib": "DS&A Specialist C", "sun": { "session": "2-sequence DP: comparing two strings/arrays. LCS template. Edit distance. Show the dp table filling row by row. Pattern ID: two sequences + optimal alignment = 2D DP table.", "disc": "Think-pair-share: why is coin change DP and not greedy? Must give a concrete counter-example.", "lab": "Longest Common Subsequence, Edit Distance, Longest Increasing Subsequence, Word Break.", "grind": "LeetCode: DP subsequence. Target 8 problems.", "sr": "Spaced rep: DP 1D \u2014 House Robber II. Backtracking \u2014 Combination Sum." }, "mon": { "session": "Matrix DP, 0/1 knapsack, partition problems. 1D to 2D: dp table gains one dimension per constraint. Pattern ID: grid traversal + optimise = 2D DP. Divide into two groups + optimise = partition DP.", "disc": "Design debate: two different DP table definitions for the same problem. Which is cleaner? The cleaner one has the clearest subproblem definition.", "lab": "Unique Paths, Minimum Path Sum, Partition Equal Subset Sum, Burst Balloons.", "grind": "LeetCode: DP 2D/advanced. Target 8 problems.", "sr": "Spaced rep: Trie \u2014 Design Add and Search Words. Graph \u2014 Pacific Atlantic Water Flow." }, "tue": { "sr": "DP Subsequence: LCS from memory (3 min). DP 2D: Unique Paths.", "challenge": "DP hard: Regular Expression Matching, Interleaving String. FAANG differentiators.", "grind": "2 prior patterns + 2 current DP hard." }, "wed": { "peer": "Groups present DP 2D. TA: can they fill a dp table by hand without code?", "pressure": "Timed: 1 DP Subsequence + 1 DP 2D \u2014 25 min each.", "grind": "Rewrite hinted problems. Recurrence first, always." }, "thu": { "mock": "Mixed mock: 1 DP Subsequence + 1 DP 2D. Introduce system design mock format for next week.", "behavioral": "Behavioral: give an example of a technical decision you made under uncertainty.", "review": "Check: 152+ total? On track for 200+?" }, "target": 16, "cum": 168 }, { "w": 10, "phase": "Systems", "isnew": false, "pa": "Heaps / Top K Elements", "pb": "System Design Patterns", "instructor": "Heaps specialist (Sun) + Principal engineer (Mon)", "ia": "DS&A Specialist C", "ib": "Staff / Principal Engineer", "sun": { "session": "Heap: insert O(log n), extract-min O(log n). Min/max-heap. Two-heap pattern for running median. K-way merge. Pattern ID: find K largest/smallest/most frequent = heap. Heaps are a differentiator.", "disc": "Worst-case: design the worst possible input for a heap-based solution. Students attack each other's implementations.", "lab": "Kth Largest Element, Top K Frequent Elements, Merge K Sorted Lists, Find Median from Data Stream.", "grind": "LeetCode: Heap / Priority Queue. Target 10 problems.", "sr": "Spaced rep: Greedy \u2014 Task Scheduler. DP 1D \u2014 Coin Change variant." }, "mon": { "session": "System design as patterns: cache-aside vs write-through, fan-out on write vs read, sharding, CAP theorem. Interview format: requirements \u2192 estimation \u2192 high-level \u2192 deep dive \u2192 trade-offs.", "disc": "Design debate: fan-out on write vs read for a social feed. Must quantify \u2014 1M users, each following 500 people, writes per second?", "lab": "Design a URL shortener (30 min, present to group). Design a rate limiter (30 min). Instructor gives rubric feedback.", "grind": "System design: read one architecture post. LeetCode: 8 heap problems.", "sr": "Spaced rep: Tree BFS \u2014 ZigZag Level Order. Backtracking \u2014 N-Queens." }, "tue": { "sr": "Heap: Kth Largest in Stream. DP Subsequence: Longest Increasing Subsequence.", "challenge": "Heap hard: Smallest Range Covering K Lists. Mini system design: notification system.", "grind": "8 problems: Heap + prior patterns." }, "wed": { "peer": "Groups present rate limiter design. TA: did they gather requirements? Trade-offs discussed?", "pressure": "Timed: 1 Heap (20 min) + 1 mini system design sketch \u2014 CDN (15 min).", "grind": "Rewrite hinted coding problems. Read one system design case study." }, "thu": { "mock": "First system design mock: design a Twitter feed (30 min, rubric scored). Debrief on trade-off quality.", "behavioral": "Behavioral: describe a system you designed or would design differently now.", "review": "Draw the URL shortener architecture from memory." }, "target": 15, "cum": 183 }, { "w": 11, "phase": "Mock", "isnew": false, "pa": "Merge Intervals + Monotonic Stack", "pb": "Full Onsite Simulation", "instructor": "Coordinator-led + 3 mock panelists", "ia": "DS&A Specialist", "ib": "3 Senior Engineers", "sun": { "session": "Merge Intervals: sort by start, merge overlapping. Monotonic Stack: maintain a stack of increasing/decreasing elements. Pattern ID: overlapping ranges = merge intervals. Next greater/smaller element = monotonic stack.", "disc": "Speed classification: 10 problems in 20 minutes. Name the pattern. Speed matters \u2014 this is Week 11.", "lab": "Merge Intervals, Insert Interval, Non-Overlapping Intervals, Largest Rectangle in Histogram, Daily Temperatures.", "grind": "Merge Intervals + Monotonic Stack. PLUS: revisit 5 problems from Weeks 1\u20133 solved with hints.", "sr": "Full spaced rep: challenge lab includes one problem from each of Weeks 1\u20135 patterns." }, "mon": { "session": "No new instruction. Strategy session: UMPIRE method \u2014 Understand, Match to pattern, Plan, Implement, Review, Evaluate. How to handle blanking. How to recover from a wrong turn.", "disc": "Group debrief: what pattern are you least confident in? Cohort maps gaps. TA assigns personalised lists.", "lab": "Open lab: students self-select weakest pattern. TAs provide one-on-one help. Only unstructured lab in the program.", "grind": "Personalised list based on Monday gap analysis.", "sr": "All 20 patterns \u2014 culmination of the entire spaced rep arc." }, "tue": { "sr": "Full spaced rep: one problem from each of Weeks 1\u20135 patterns. Hardest lab of the program.", "challenge": "Mock 1: full coding interview simulation (45 min, TA as interviewer, rubric scored).", "grind": "Revisit every problem solved with hints in 11 weeks. Can you solve without hints?" }, "wed": { "peer": "Mock 2: system design \u2014 design a distributed cache (45 min, rubric scored).", "pressure": "Mock 3: full behavioral interview \u2014 45 min with senior engineer. FAANG behavioral rubric.", "grind": "Final review: re-solve the 5 hardest problems you have done. Under 20 min each." }, "thu": { "mock": "Graduation mock: 1 coding (30 min) + 1 system design (30 min) + 1 behavioral (20 min).", "behavioral": "Peer feedback using rubric. Coordinator presents aggregate cohort data.", "review": "Program close: each student presents LeetCode tracker. Top 3 cohort strengths, top 3 gaps." }, "target": 15, "cum": 198 }]; const SR_MAP = { "Two Pointers": ["N", "R", "R", "M", "", "R", "", "", "", "", "M"], "Prefix Sum": ["N", "R", "", "R", "M", "", "", "R", "", "", "M"], "Sliding Window": ["", "N", "R", "R", "", "M", "", "", "R", "", "M"], "Bit Manipulation": ["", "N", "", "R", "", "R", "M", "", "", "", "M"], "In-place LL Reversal": ["", "", "N", "R", "R", "", "", "R", "", "", "M"], "Fast & Slow Pointers": ["", "", "N", "", "R", "R", "", "", "M", "", "M"], "Modified Binary Search": ["", "", "", "N", "R", "", "R", "M", "", "", "M"], "Greedy": ["", "", "", "N", "", "R", "", "R", "M", "", "M"], "Tree BFS": ["", "", "", "", "N", "R", "", "R", "", "M", "M"], "Tree DFS": ["", "", "", "", "N", "R", "R", "", "M", "", "M"], "Trie": ["", "", "", "", "", "N", "R", "", "R", "", "M"], "Backtracking": ["", "", "", "", "", "N", "R", "", "R", "M", "M"], "Graph BFS/DFS": ["", "", "", "", "", "", "N", "R", "", "R", "M"], "Union Find": ["", "", "", "", "", "", "N", "R", "", "R", "M"], "Topological Sort": ["", "", "", "", "", "", "", "N", "R", "", "M"], "DP \u2014 1D": ["", "", "", "", "", "", "", "N", "R", "R", "M"], "DP \u2014 Subsequence": ["", "", "", "", "", "", "", "", "N", "R", "M"], "DP \u2014 2D": ["", "", "", "", "", "", "", "", "N", "R", "M"], "Heaps / Top K": ["", "", "", "", "", "", "", "", "", "N", "M"], "System Design": ["", "", "", "", "", "", "", "", "", "N", "M"] }; const PATTERNS = [["Two Pointers", "Sorted array + find pair/triplet + O(n\u00b2) brute force feels obvious", false], ["Prefix Sum", "Subarray sum / range query / cumulative calculation in O(1)", true], ["Sliding Window", "Contiguous subarray/substring + optimise length or sum", false], ["Bit Manipulation", "Duplicates/missing numbers, set/unset bits, XOR tricks", true], ["In-place Linked List Reversal", "Reverse a linked list or sublist without extra space", true], ["Fast & Slow Pointers", "Linked list + detect cycle, find middle, or find position", false], ["Modified Binary Search", "Sorted input + find target \u2014 binary search even when non-obvious", false], ["Greedy", "Local optimal choice at each step provably leads to global optimum", true], ["Tree BFS", "Process nodes level by level / shortest path in a tree", false], ["Tree DFS", "Path sum / validate property / max depth / any tree traversal", false], ["Trie (Prefix Tree)", "Prefix matching / autocomplete / word dictionary / starts-with", true], ["Backtracking", "Generate ALL valid combinations / permutations / subsets", false], ["Graph BFS/DFS", "Grid / connections / reachability / connected components", false], ["Union Find", "Dynamic connectivity / grouping with merging / cycles in undirected graphs", true], ["Topological Sort", "Dependency ordering / detect circular dependency / scheduling", false], ["DP \u2014 1D Patterns", "Optimise a value across choices with overlapping subproblems (linear)", false], ["DP \u2014 Subsequence/Interval", "Two sequences to compare / LCS / edit distance / interval problems", false], ["DP \u2014 2D / Advanced", "Grid traversal + optimise / knapsack / partition problems", false], ["Heaps / Top K", "Find K largest/smallest/most frequent in a stream or array", false], ["System Design", "Open-ended: design a system at scale with explicit trade-offs", false]]; const TRACKER = [[1, "Two Pointers", "Prefix Sum", 22, 12, 8, 5, 4, 3, 22, "Build the habit before the difficulty."], [2, "Sliding Window", "Bit Manipulation", 20, 10, 8, 5, 4, 3, 42, "XOR tricks: learn once, never forget."], [3, "LL Reversal", "Fast & Slow", 20, 10, 8, 5, 4, 3, 62, "Draw pointer diagrams before every linked list problem."], [4, "Binary Search", "Greedy", 18, 10, 8, 4, 3, 3, 80, "Binary search: state the invariant. Greedy: state the proof."], [5, "Tree BFS", "Tree DFS", 20, 10, 10, 5, 4, 3, 100, "Milestone: 100 problems. On track?"], [6, "Trie", "Backtracking", 18, 10, 10, 4, 4, 3, 118, "Word Search II uses Trie + backtracking. Do it."], [7, "Graph BFS/DFS", "Union Find", 18, 10, 8, 4, 4, 3, 136, "Mid-program: 136 total. Gap analysis Thursday."], [8, "Topological Sort", "DP 1D", 16, 8, 8, 4, 4, 3, 152, "Write recurrence BEFORE code. Every DP problem."], [9, "DP Subsequence", "DP 2D", 16, 8, 8, 4, 4, 3, 168, "Fill the dp table by hand before coding."], [10, "Heaps / Top K", "System Design", 15, 10, 8, 4, 4, 2, 183, "Coding + 2 system design exercises."], [11, "Merge Intervals", "Full Simulation", 15, 10, 5, 5, 5, 3, 198, "Final: 198+ total. Graduate mock on Thursday."]]; const VOLUNTEERS = [{ "color": "#2563EB", "bg": "#EFF6FF", "dk": "#1E40AF", "count": 1, "title": "Program coordinator", "tag": "Core", "weeks": "All 11", "commit": "Thu on-site + admin throughout", "total": "~55h" }, { "color": "#059669", "bg": "#ECFDF5", "dk": "#065F46", "count": 5, "title": "Group TAs (1 per student group of 5)", "tag": "Core", "weeks": "All 11", "commit": "Tue + Wed + Thu \u00b7 4.5h/week each", "total": "~50h each" }, { "color": "#059669", "bg": "#ECFDF5", "dk": "#065F46", "count": 2, "title": "Lab TAs", "tag": "Core", "weeks": "All 11", "commit": "Mon + Tue challenge lab \u00b7 3h/week each", "total": "~33h each" }, { "color": "#6B5CE7", "bg": "#F0EFFE", "dk": "#3C3489", "count": 11, "title": "Weekly instructors (1 per week)", "tag": "Instructor", "weeks": "1 week each", "commit": "Sun + Mon \u00b7 5h that week only", "total": "~8h each" }, { "color": "#D97706", "bg": "#FFFBEB", "dk": "#92400E", "count": 1, "title": "Staff / principal engineer", "tag": "Specialist", "weeks": "Week 10 Monday", "commit": "Monday session only", "total": "~5h" }, { "color": "#C2400C", "bg": "#FFF7ED", "dk": "#7C2D12", "count": 3, "title": "Week 11 mock panel", "tag": "Week 11", "weeks": "Week 11 only", "commit": "Tue + Wed + Thu \u00b7 ~6h/day", "total": "~18h total" }]; const INST_TABLE = [["Program coordinator", "All 11", "Thu (+ admin)", "Manages scheduling, student tracking, behavioral sessions. Present Thursday every week."], ["5 Group TAs", "All 11", "Tue + Wed + Thu", "Each TA owns one group of 5 students. Peer sprints, peer walkthroughs, Thursday mock interviewer. 1:5 student ratio."], ["2 Lab TAs", "All 11", "Mon + Tue", "Run Monday guided lab and Tuesday challenge lab for all 25 students."], ["11 Weekly instructors", "1 week each", "Sun + Mon", "One instructor per week, teaches both Sunday and Monday sessions. Max commitment: 5h on-site + 2\u20133h prep."], ["Staff / principal engineer", "Week 10", "Monday only", "Owns the system design session. Must have shipped real production systems at scale."], ["3 Mock panelists", "Week 11", "Tue + Wed + Thu", "Final graduation mocks. Senior engineers who actively interview candidates."]]; const PHASE_MAP = { "DS&A": ["#EFF6FF", "#1E40AF"], "DP": ["#F0EFFE", "#3C3489"], "Systems": ["#ECFDF5", "#065F46"], "Mock": ["#FFF7ED", "#7C2D12"] };
+    const DAY_CFG = [
+      { name: "Sunday", role: "Pattern A", acc: "var(--sun)", off: false, sessions: [{ pill: "Instructor", ps: "background:var(--sun-bg);color:var(--sun-dk)", name: "Session", desc: "Concept + template + examples. Think-aloud warm-up.", time: "90 min" }, { pill: "Discussion", ps: "background:var(--sun-bg);color:var(--sun-dk)", name: "Discussion", desc: "Student-driven: code autopsy, debate, worst-case.", time: "60 min" }, { pill: "Lab TA", ps: "background:var(--mon-bg);color:var(--mon-dk)", name: "Guided lab", desc: "Pattern A applied. Lab TAs circulate.", time: "90 min" }, { pill: "Solo", ps: "background:var(--bs);color:var(--t2)", name: "Evening grind", desc: "Pattern-tagged LeetCode list.", time: "120 min" }] },
+      { name: "Monday", role: "Pattern B", acc: "var(--mon)", off: false, sessions: [{ pill: "Instructor", ps: "background:var(--mon-bg);color:var(--mon-dk)", name: "Session", desc: "Pattern B — same format as Sunday.", time: "90 min" }, { pill: "Discussion", ps: "background:var(--mon-bg);color:var(--mon-dk)", name: "Discussion", desc: "Rotate format each week.", time: "60 min" }, { pill: "Lab TA", ps: "background:var(--mon-bg);color:var(--mon-dk)", name: "Guided lab", desc: "Pattern B applied.", time: "90 min" }, { pill: "Solo", ps: "background:var(--bs);color:var(--t2)", name: "Evening grind", desc: "Pattern B + revisit Pattern A.", time: "120 min" }] },
+      { name: "Tuesday", role: "Spaced rep", acc: "var(--tue)", off: false, sessions: [{ pill: "Group TAs", ps: "background:var(--tue-bg);color:var(--tue-dk)", name: "Peer sprint", desc: "Groups of 5. Prior week pattern.", time: "90 min" }, { pill: "Lab TAs", ps: "background:var(--mon-bg);color:var(--mon-dk)", name: "Challenge lab", desc: "Hard problems. No hints 30 min.", time: "90 min" }, { pill: "Solo", ps: "background:var(--bs);color:var(--t2)", name: "Evening grind", desc: "Current + prior patterns.", time: "120 min" }] },
+      { name: "Wednesday", role: "Pressure", acc: "var(--wed)", off: false, sessions: [{ pill: "Group TAs", ps: "background:var(--wed-bg);color:var(--wed-dk)", name: "Peer walkthrough", desc: "Groups present Tuesday solutions.", time: "90 min" }, { pill: "Group TAs", ps: "background:var(--wed-bg);color:var(--wed-dk)", name: "Pressure lab", desc: "Timed, interview conditions.", time: "90 min" }, { pill: "Solo", ps: "background:var(--bs);color:var(--t2)", name: "Evening grind", desc: "Rewrite every hinted problem.", time: "120 min" }] },
+      { name: "Thursday", role: "Mock day", acc: "var(--thu)", off: false, sessions: [{ pill: "Group TAs", ps: "background:var(--thu-bg);color:var(--thu-dk)", name: "Coding mock", desc: "45 min. Group TA as interviewer.", time: "45+45 min" }, { pill: "Coordinator", ps: "background:var(--wed-bg);color:var(--wed-dk)", name: "Behavioral", desc: "3 STAR questions. All 25 students.", time: "90 min" }, { pill: "Solo", ps: "background:var(--bs);color:var(--t2)", name: "Week review", desc: "Rewrite hinted. Check count.", time: "60 min" }] },
+      { name: "Friday", role: "Rest", acc: "var(--bd)", off: true },
+      { name: "Saturday", role: "Rest", acc: "var(--bd)", off: true },
+    ];
+
+    function pill(text, bg, tc) { return '<span class="s-pill" style="background:' + bg + ';color:' + tc + '">' + text + '</span>'; }
+    function badge(text, bg, tc) { return '<span style="font-size:9px;font-weight:500;padding:2px 7px;border-radius:20px;background:' + bg + ';color:' + tc + '">' + text + '</span>'; }
+
+    function renderPatterns() {
+      document.getElementById('pat-grid').innerHTML = PATTERNS.map(([n, s], i) =>
+        '<div class="pat-card"><div class="pat-num">' + String(i + 1).padStart(2, '0') + '</div><div class="pat-name">' + n + '</div><div class="pat-signal">' + s + '</div></div>'
+      ).join('');
+    }
+
+    function renderDayStrip() {
+      document.getElementById('day-strip').innerHTML = DAY_CFG.map(d => {
+        const body = d.off ? '<div style="color:var(--t3);font-size:11px;text-align:center;padding-top:1rem">Rest</div>' :
+          d.sessions.map((s, si) => '<span class="s-pill" style="' + s.ps + '">' + s.pill + '</span><div class="s-name">' + s.name + '</div><div class="s-desc">' + s.desc + '</div><div class="s-time">' + s.time + '</div>' + (si < d.sessions.length - 1 ? '<div class="s-div"></div>' : '')).join('');
+        return '<div class="ds-col' + (d.off ? ' off-col' : '') + '"><div class="ds-head" style="border-top:2px solid ' + d.acc + '"><div class="ds-name">' + d.name + '</div><div class="ds-role">' + d.role + '</div></div><div class="ds-body">' + body + '</div></div>';
+      }).join('');
+    }
+
+    function renderVolunteers() {
+      document.getElementById('vol-grid').innerHTML = VOLUNTEERS.map(v =>
+        '<div class="vol-card" style="border-left:3px solid ' + v.color + '"><div class="vol-count" style="color:' + v.color + '">' + v.count + '</div><div class="vol-title">' + v.title + '</div><div class="vol-commit" style="color:var(--t3)">' + v.commit + '</div><div style="display:flex;justify-content:space-between;align-items:center;margin-top:.35rem"><span style="font-size:10px;font-weight:500;padding:2px 7px;border-radius:20px;background:' + v.bg + ';color:' + v.dk + '">' + v.tag + '</span><span style="font-size:11px;font-weight:500;color:' + v.color + '">' + v.total + '</span></div></div>'
+      ).join('');
+    }
+
+    let openWks = new Set(), activeTabs = {};
+    function toggleWk(w) { openWks.has(w) ? openWks.delete(w) : openWks.add(w); renderCurr(); }
+    function switchTab(w, d) {
+      activeTabs[w] = d;
+      const det = document.getElementById('det-' + w); if (!det) return;
+      const accs = { sun: 'var(--sun)', mon: 'var(--mon)', tue: 'var(--tue)', wed: 'var(--wed)', thu: 'var(--thu)', staff: 'var(--sun)' };
+      det.querySelectorAll('.dt').forEach(t => { t.classList.toggle('active', t.dataset.day === d); t.style.color = t.dataset.day === d ? (accs[d] || 'var(--sun)') : '' });
+      det.querySelectorAll('.dpane').forEach(p => p.classList.toggle('active', p.dataset.day === d));
+    }
+
+    function staffPane(wk) {
+      const days = [
+        { d: 'Sunday', acc: 'var(--sun)', dk: 'var(--sun-dk)', items: [{ role: 'INSTRUCTOR', who: rSunInst(wk), what: 'Session + discussion · 2.5h', bg: 'var(--sun-bg)', c: 'var(--sun-dk)' }, { role: 'LAB TA ×2', who: rLabTA(0) + ' · ' + rLabTA(1), what: 'Guided lab · 90 min', bg: 'var(--mon-bg)', c: 'var(--mon-dk)' }] },
+        { d: 'Monday', acc: 'var(--mon)', dk: 'var(--mon-dk)', items: [{ role: 'INSTRUCTOR', who: rMonInst(wk), what: 'Session + discussion · 2.5h', bg: 'var(--sun-bg)', c: 'var(--sun-dk)' }, { role: 'LAB TA ×2', who: rLabTA(0) + ' · ' + rLabTA(1), what: 'Guided lab · 90 min', bg: 'var(--mon-bg)', c: 'var(--mon-dk)' }] },
+        { d: 'Tuesday', acc: 'var(--tue)', dk: 'var(--tue-dk)', items: [{ role: 'GROUP TA ×5', who: [0,1,2,3,4].map(rGroupTA).join(' · '), what: 'Peer sprint · 90 min', bg: 'var(--tue-bg)', c: 'var(--tue-dk)' }, { role: 'LAB TA ×2', who: rLabTA(0) + ' · ' + rLabTA(1), what: 'Challenge lab · 90 min', bg: 'var(--mon-bg)', c: 'var(--mon-dk)' }] },
+        { d: 'Wednesday', acc: 'var(--wed)', dk: 'var(--wed-dk)', items: [{ role: 'GROUP TA ×5', who: [0,1,2,3,4].map(rGroupTA).join(' · '), what: 'Peer walkthrough · 90 min', bg: 'var(--wed-bg)', c: 'var(--wed-dk)' }, { role: 'GROUP TA ×5', who: [0,1,2,3,4].map(rGroupTA).join(' · '), what: 'Pressure lab · 90 min', bg: 'var(--wed-bg)', c: 'var(--wed-dk)' }] },
+        { d: 'Thursday', acc: 'var(--thu)', dk: 'var(--thu-dk)', items: [{ role: 'GROUP TA ×5', who: [0,1,2,3,4].map(rGroupTA).join(' · '), what: 'Coding mock + debrief', bg: 'var(--thu-bg)', c: 'var(--thu-dk)' }, { role: 'COORDINATOR', who: rCoord(), what: 'Behavioral session · 90 min', bg: 'var(--wed-bg)', c: 'var(--wed-dk)' }] },
+      ];
+      return '<div class="dpane single" data-day="staff"><div style="margin-bottom:.75rem;padding:.6rem .875rem;background:var(--sun-bg);border-radius:var(--r);border:0.5px solid #AFA9EC"><div style="font-size:9px;font-weight:500;text-transform:uppercase;letter-spacing:.07em;color:var(--sun-dk);margin-bottom:2px">Week ' + wk.w + ' instructor</div><div style="font-size:13px;font-weight:500;color:var(--sun-dk)">' + rInst(wk) + '</div></div>'
+        + days.map(sd => '<div class="staff-row"><div class="staff-day" style="color:' + sd.acc + '">' + sd.d + '</div><div class="staff-sessions">' + sd.items.map(it => '<div class="ss-item"><span class="role-tag" style="background:' + it.bg + ';color:' + it.c + '">' + it.role + '</span><div><div class="ss-title">' + it.who + '</div><div class="ss-sub">' + it.what + '</div></div></div>').join('') + '</div></div>').join('')
+        + '</div>';
+    }
+
+    function sesPane(wk, key, acc, dk, topic, inst, data) {
+      return '<div class="dpane" data-day="' + key + '"><div><div class="db" style="border-left:3px solid ' + acc + '"><div class="db-lbl" style="color:' + dk + '">Session — ' + topic + ' · 90 min · ' + inst + '</div><div class="db-text">' + data.session + '</div></div><div class="db"><div class="db-lbl" style="color:' + dk + '">Discussion · 60 min</div><div class="db-text">' + data.disc + '</div></div><div class="sr-bl"><div class="sr-lbl">Spaced repetition</div><div class="sr-text">' + data.sr + '</div></div></div><div><div class="db" style="border-left:3px solid var(--tue)"><div class="db-lbl" style="color:var(--tue-dk)">Guided lab · 90 min · Lab TAs</div><div class="db-text">' + data.lab + '</div><div class="db-probs">' + data.lab.split(',').map(p => '<span class="dp-tag">' + p.trim() + '</span>').join('') + '</div></div><div class="grind-bl"><div class="grind-lbl">Evening grind</div>' + data.grind + '</div></div></div>';
+    }
+
+    function pracPane(wk, key, acc, dk, data) {
+      return '<div class="dpane" data-day="' + key + '"><div><div class="db" style="border-left:3px solid ' + acc + '"><div class="db-lbl" style="color:' + dk + '">' + (key === 'tue' ? 'Spaced rep · Group TAs' : 'Peer walkthrough · Group TAs') + ' · 90 min</div><div class="db-text">' + (key === 'tue' ? '<strong>Spaced rep:</strong> ' + data.sr : data.peer) + '</div></div><div class="db" style="border-left:3px solid ' + acc + '"><div class="db-lbl" style="color:' + dk + '">' + (key === 'tue' ? 'Challenge lab · Lab TAs' : 'Pressure lab · Group TAs') + ' · 90 min</div><div class="db-text">' + (key === 'tue' ? data.challenge : data.pressure) + '</div></div></div><div><div class="grind-bl"><div class="grind-lbl">Evening grind</div>' + data.grind + '</div></div></div>';
+    }
+
+    function mockPane(wk) {
+      return '<div class="dpane single" data-day="thu"><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px"><div><div class="mock-bl"><div class="mock-lbl">Coding mock · Group TAs · 5 parallel groups</div><div class="mock-text">' + wk.thu.mock + '</div></div></div><div><div class="mock-bl"><div class="mock-lbl">Behavioral · Coordinator · all 25 students</div><div class="mock-text">' + wk.thu.behavioral + '</div></div><div class="grind-bl" style="margin-top:.5rem"><div class="grind-lbl">Week review</div>' + wk.thu.review + '</div></div></div></div>';
+    }
+
+    function renderCurr() {
+      document.getElementById('curr-container').innerHTML = WEEKS.map(wk => {
+        const [pbg, ptc] = PHASE_MAP[wk.phase] || ["#E6F1FB", "#0C447C"];
+        const isOpen = openWks.has(wk.w);
+        const aDay = activeTabs[wk.w] || 'sun';
+        const tabDefs = [['sun', 'Sunday'], ['mon', 'Monday'], ['tue', 'Tuesday'], ['wed', 'Wednesday'], ['thu', 'Thursday'], ['staff', 'Staffing']];
+        const tabAccs = { sun: 'var(--sun)', mon: 'var(--mon)', tue: 'var(--tue)', wed: 'var(--wed)', thu: 'var(--thu)', staff: 'var(--sun)' };
+        const tabs = tabDefs.map(([k, l]) => '<div class="dt' + (k === aDay ? ' active' : '') + '" data-day="' + k + '" style="' + (k === aDay ? 'color:' + tabAccs[k] : '') + '" onclick="switchTab(' + wk.w + ',\'' + k + '\')">' + l + '</div>').join('');
+        const panes = sesPane(wk, 'sun', 'var(--sun)', 'var(--sun-dk)', wk.pa, rSunInst(wk), wk.sun) + sesPane(wk, 'mon', 'var(--mon)', 'var(--mon-dk)', wk.pb, rMonInst(wk), wk.mon) + pracPane(wk, 'tue', 'var(--tue)', 'var(--tue-dk)', wk.tue) + pracPane(wk, 'wed', 'var(--wed)', 'var(--wed-dk)', wk.wed) + mockPane(wk) + staffPane(wk);
+        return '<div class="week-card" id="week-' + wk.w + '"><div class="wh" onclick="toggleWk(' + wk.w + ')"><div class="wc" style="background:' + pbg + '"><div style="font-size:20px;font-weight:500;color:' + ptc + '">' + wk.w + '</div></div><div class="wc"><span class="phase-b" style="background:' + pbg + ';color:' + ptc + '">' + wk.phase + '</span></div><div class="wc"><div class="wl">Sunday · Pattern A</div><div class="wv">' + wk.pa + '</div><div class="ws">' + rSunInst(wk) + '</div></div><div class="wc"><div class="wl">Monday · Pattern B</div><div class="wv">' + wk.pb + '</div><div class="ws">' + rMonInst(wk) + '</div></div><div class="wc"><div class="wl">Instructor this week</div><div class="wv" style="font-size:12px">' + rInst(wk) + '</div><div style="display:flex;gap:4px;flex-wrap:wrap;margin-top:4px"><span style="font-size:9px;font-weight:500;padding:2px 7px;border-radius:20px;background:var(--sun-bg);color:var(--sun-dk)">W' + wk.w + ' of 11</span></div></div><div class="wc"><i class="ti ti-chevron-down chevron' + (isOpen ? ' open' : '') + '" aria-hidden="true"></i></div></div><div class="wd' + (isOpen ? ' open' : '') + '" id="det-' + wk.w + '"><div class="day-tabs">' + tabs + '</div>' + panes + '</div></div>';
+      }).join('');
+    }
+
+    function renderSR() {
+      const pats = Object.keys(SR_MAP);
+      let h = '<thead><tr><th>Pattern</th>'; for (let i = 1; i <= 11; i++)h += '<th>W' + i + '</th>'; h += '</tr></thead><tbody>';
+      pats.forEach(p => { h += '<tr><td>' + p + '</td>'; SR_MAP[p].forEach(v => { h += '<td>' + (v === 'N' ? '<span class="sr-dot sr-n">N</span>' : v === 'R' ? '<span class="sr-dot sr-r">R</span>' : v === 'M' ? '<span class="sr-dot sr-m">M</span>' : '') + '</td>'; }); h += '</tr>'; });
+      h += '</tbody>'; document.getElementById('sr-table').innerHTML = h;
+    }
+
+    function renderTracker() {
+      let h = '<thead><tr><th>Wk</th><th>Pattern A</th><th>Pattern B</th><th>Weekly</th><th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Cumulative</th><th>Notes</th></tr></thead><tbody>';
+      TRACKER.forEach(([w, pa, pb, wt, sg, mg, tg, wg, tr, cum, note]) => {
+        const [pbg, ptc] = PHASE_MAP[WEEKS[w - 1].phase] || ["#E6F1FB", "#0C447C"];
+        h += '<tr><td style="font-weight:500;color:' + ptc + '">' + w + '</td><td>' + pa + '</td><td>' + pb + '</td><td class="tc">' + wt + '</td><td style="text-align:center;color:var(--t2)">' + sg + '</td><td style="text-align:center;color:var(--t2)">' + mg + '</td><td style="text-align:center;color:var(--t2)">' + tg + '</td><td style="text-align:center;color:var(--t2)">' + wg + '</td><td style="text-align:center;color:var(--t2)">' + tr + '</td><td class="tcc">' + cum + '</td><td style="color:var(--t2);font-size:11px">' + note + '</td></tr>';
+      });
+      h += '<tr class="tr-total"><td colspan="3" style="text-align:right;color:var(--t2)">Total</td><td class="tc">198</td><td colspan="5"></td><td class="tcc">198+</td><td></td></tr></tbody>';
+      document.getElementById('tr-table').innerHTML = h;
+    }
+
+    function renderInstTable() {
+      let h = '<thead><tr><th>Role</th><th>Weeks</th><th>Days present</th><th>Responsibilities</th></tr></thead><tbody>';
+      INST_TABLE.forEach(([role, weeks, days, resp]) => { h += '<tr><td style="font-weight:500">' + role + '</td><td style="color:var(--sun-dk);font-weight:500;white-space:nowrap">' + weeks + '</td><td style="color:var(--t2);font-size:12px;white-space:nowrap">' + days + '</td><td style="color:var(--t2);font-size:12px">' + resp + '</td></tr>'; });
+      h += '</tbody>'; document.getElementById('inst-table').innerHTML = h;
+    }
+
+    function switchRosterTab(tab) {
+      document.querySelectorAll('.r-tab').forEach((t, i) => t.classList.toggle('active', ['volunteers', 'students'][i] === tab));
+      document.querySelectorAll('.r-pane').forEach(p => p.classList.remove('active'));
+      document.getElementById('r-' + tab).classList.add('active');
+    }
+
+    function rCard(role, idx, label, meta, color) {
+      const key = { coordinator: 'coordinator', groupTA: 'groupTAs', labTA: 'labTAs', instructor: 'instructors', principal: 'principal', mockPanel: 'mockPanel' }[role];
+      const val = idx !== null ? ROSTER[key][idx] : ROSTER[key];
+      const da = 'data-rkey="' + key + '"' + (idx !== null ? ' data-ridx="' + idx + '"' : '');
+      return '<div class="r-card" style="border-left-color:' + color + '">'
+        + '<div class="r-card-label" style="color:' + color + '">' + escHtml(label) + '</div>'
+        + '<input class="r-input" ' + da + ' value="' + escHtml(val) + '" placeholder="Enter name…">'
+        + '<div class="r-meta">' + escHtml(meta) + '</div>'
+        + '</div>';
+    }
+
+    function renderVolRoster() {
+      let h = '';
+      h += '<div class="rsec-hd">Program Coordinator</div>';
+      h += '<div class="r-grid r-g1" style="max-width:340px">' + rCard('coordinator', null, 'Coordinator', 'All 11 weeks · Thu on-site + admin · ~55h', '#2563EB') + '</div>';
+
+      h += '<div class="rsec-hd">Group TAs <span>5 — one per student group</span></div>';
+      h += '<div class="r-grid r-g5">';
+      for (let i = 0; i < 5; i++) h += rCard('groupTA', i, 'Group ' + (i + 1) + ' TA', 'Tue+Wed+Thu · all 11 wks · ~50h', '#059669');
+      h += '</div>';
+
+      h += '<div class="rsec-hd">Lab TAs <span>2 — Mon + Tue challenge lab</span></div>';
+      h += '<div class="r-grid r-g2" style="max-width:480px">';
+      for (let i = 0; i < 2; i++) h += rCard('labTA', i, 'Lab TA ' + (i + 1), 'Mon+Tue · all 11 wks · ~33h', '#059669');
+      h += '</div>';
+
+      h += '<div class="rsec-hd">Weekly Instructors <span>11 — one per week, Sun + Mon only</span></div>';
+      h += '<div class="r-grid r-g4">';
+      WEEKS.forEach((wk, i) => h += rCard('instructor', i, 'W' + wk.w + ' · ' + wk.pa + ' + ' + wk.pb, wk.instructor + ' · Sun+Mon · ~8h', '#6B5CE7'));
+      h += '</div>';
+
+      h += '<div class="rsec-hd">Staff / Principal Engineer</div>';
+      h += '<div class="r-grid r-g1" style="max-width:340px">' + rCard('principal', null, 'Principal Engineer', 'Week 10 Monday only · system design · ~5h', '#D97706') + '</div>';
+
+      h += '<div class="rsec-hd">Week 11 Mock Panelists <span>3</span></div>';
+      h += '<div class="r-grid r-g3" style="max-width:720px">';
+      for (let i = 0; i < 3; i++) h += rCard('mockPanel', i, 'Mock Panelist ' + (i + 1), 'Week 11 · Tue+Wed+Thu · ~18h', '#C2400C');
+      h += '</div>';
+
+      document.getElementById('r-volunteers').innerHTML = h;
+    }
+
+    function renderStudentRoster() {
+      let h = '';
+      for (let g = 0; g < 5; g++) {
+        const taName = ROSTER.groupTAs[g] || ('Group TA ' + (g + 1));
+        h += '<div class="r-group-card">';
+        h += '<div class="r-group-hd"><div class="r-group-title">Group ' + (g + 1) + '</div><div class="r-group-ta">TA: ' + escHtml(taName) + '</div></div>';
+        h += '<div class="r-student-list">';
+        for (let s = 0; s < 5; s++) {
+          const num = g * 5 + s + 1;
+          h += '<div class="r-student-row"><div class="r-student-num">' + String(num).padStart(2, '0') + '</div>'
+            + '<input class="r-input" data-rkey="students" data-rg="' + g + '" data-rs="' + s + '" value="' + escHtml(ROSTER.students[g][s]) + '" placeholder="Student name…">'
+            + '</div>';
+        }
+        h += '</div></div>';
+      }
+      document.getElementById('r-students').innerHTML = h;
+    }
+
+    function renderRoster() {
+      renderVolRoster();
+      renderStudentRoster();
+    }
+
+    document.addEventListener('input', function (e) {
+      const el = e.target;
+      if (!el.classList.contains('r-input')) return;
+      const key = el.dataset.rkey;
+      if (!key) return;
+      if (key === 'students') {
+        ROSTER.students[+el.dataset.rg][+el.dataset.rs] = el.value;
+      } else if (el.dataset.ridx !== undefined) {
+        ROSTER[key][+el.dataset.ridx] = el.value;
+      } else {
+        ROSTER[key] = el.value;
+      }
+      saveRoster();
+      // propagate instructor/coordinator/TA names into curriculum view
+      renderCurr();
+      // refresh student group headers if a TA name changed
+      if (key === 'groupTAs') renderStudentRoster();
+    });
+
+    function updateNav() {
+      let cur = '';
+      document.querySelectorAll('section[id],[id^="week-"]').forEach(s => { if (s.getBoundingClientRect().top <= 100) cur = s.id; });
+      document.querySelectorAll('.sb-link,.sb-week').forEach(l => l.classList.toggle('active', l.getAttribute('href').slice(1) === cur));
+    }
+    window.addEventListener('scroll', updateNav, { passive: true });
+    loadRoster(); renderPatterns(); renderDayStrip(); renderVolunteers(); renderRoster(); renderCurr(); renderSR(); renderTracker(); renderInstTable();
+  </script>
+</body>
+
+</html>
