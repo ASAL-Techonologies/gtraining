@@ -57,6 +57,10 @@
       --sun-bg: #EEEDFE;
       --sun-t: #534AB7;
       --sun-dk: #3C3489;
+      --brand: #0D9488;
+      --brand-bg: #E6FAF6;
+      --brand-t: #0F766E;
+      --brand-dk: #134E4A;
       --mon: #378ADD;
       --mon-bg: #E6F1FB;
       --mon-t: #185FA5;
@@ -149,14 +153,14 @@
     }
 
     .sb-link.active {
-      color: var(--sun-dk);
-      background: var(--sun-bg);
-      border-left-color: var(--sun);
+      color: var(--brand-dk);
+      background: var(--brand-bg);
+      border-left-color: var(--brand);
       font-weight: 500
     }
 
     .sb-link.active i {
-      color: var(--sun-t)
+      color: var(--brand-t)
     }
 
     .sb-week {
@@ -233,7 +237,7 @@
       width: 7px;
       height: 7px;
       border-radius: 50%;
-      background: var(--sun)
+      background: var(--brand)
     }
 
     .hero-kicker-text {
@@ -241,7 +245,7 @@
       font-weight: 500;
       letter-spacing: .08em;
       text-transform: uppercase;
-      color: var(--sun-dk)
+      color: var(--brand-dk)
     }
 
     .hero-title {
@@ -254,7 +258,7 @@
 
     .hero-title em {
       font-style: normal;
-      color: var(--sun)
+      color: var(--brand)
     }
 
     .hero-sub {
@@ -303,7 +307,7 @@
     .notice {
       background: var(--bp);
       border: 0.5px solid var(--bd);
-      border-left: 3px solid var(--sun);
+      border-left: 3px solid var(--brand);
       border-radius: 0 var(--r) var(--r) 0;
       padding: .75rem 1rem;
       font-size: 12px;
@@ -490,7 +494,7 @@
     .pat-card {
       background: var(--bp);
       border: 0.5px solid var(--bd);
-      border-left: 3px solid var(--sun);
+      border-left: 3px solid var(--brand);
       border-radius: 0 var(--r) var(--r) 0;
       padding: .65rem .875rem
     }
@@ -853,9 +857,9 @@
     }
 
     .sr-n {
-      background: var(--sun-bg);
-      color: var(--sun-dk);
-      border: 0.5px solid #AFA9EC
+      background: var(--brand-bg);
+      color: var(--brand-dk);
+      border: 0.5px solid #7FCFC4
     }
 
     .sr-r {
@@ -919,7 +923,7 @@
 
     .tcc {
       font-weight: 500;
-      color: var(--sun-t);
+      color: var(--brand-t);
       text-align: center
     }
 
@@ -1603,7 +1607,7 @@
         { d: 'Wednesday', acc: 'var(--wed)', dk: 'var(--wed-dk)', items: [{ role: 'GROUP TA ×5', who: [0, 1, 2, 3, 4].map(rGroupTA).join(' · '), what: 'Mock prep (walkthrough + timed solo) · 90 min', bg: 'var(--wed-bg)', c: 'var(--wed-dk)' }] },
         { d: 'Thursday', acc: 'var(--thu)', dk: 'var(--thu-dk)', items: [{ role: 'GROUP TA ×5', who: [0, 1, 2, 3, 4].map(rGroupTA).join(' · '), what: 'Coding mock + debrief', bg: 'var(--thu-bg)', c: 'var(--thu-dk)' }, { role: (wk.w % 2 === 0) ? 'COORDINATOR' : 'PEER-LED', who: (wk.w % 2 === 0) ? rCoord() : 'Cohort, rubric-scored', what: 'Behavioral · 90 min · ' + ((wk.w % 2 === 0) ? 'coordinator-led (even week)' : 'peer-led (odd week)'), bg: 'var(--wed-bg)', c: 'var(--wed-dk)' }] },
       ];
-      return '<div class="dpane single" data-day="staff"><div style="margin-bottom:.75rem;padding:.6rem .875rem;background:var(--sun-bg);border-radius:var(--r);border:0.5px solid #AFA9EC"><div style="font-size:9px;font-weight:500;text-transform:uppercase;letter-spacing:.07em;color:var(--sun-dk);margin-bottom:2px">Week ' + wk.w + ' instructor</div><div style="font-size:13px;font-weight:500;color:var(--sun-dk)">' + rInst(wk) + '</div></div>'
+      return '<div class="dpane single" data-day="staff"><div style="margin-bottom:.75rem;padding:.6rem .875rem;background:var(--brand-bg);border-radius:var(--r);border:0.5px solid #7FCFC4"><div style="font-size:9px;font-weight:500;text-transform:uppercase;letter-spacing:.07em;color:var(--brand-dk);margin-bottom:2px">Week ' + wk.w + ' instructor</div><div style="font-size:13px;font-weight:500;color:var(--brand-dk)">' + rInst(wk) + '</div></div>'
         + days.map(sd => '<div class="staff-row"><div class="staff-day" style="color:' + sd.acc + '">' + sd.d + '</div><div class="staff-sessions">' + sd.items.map(it => '<div class="ss-item"><span class="role-tag" style="background:' + it.bg + ';color:' + it.c + '">' + it.role + '</span><div><div class="ss-title">' + it.who + '</div><div class="ss-sub">' + it.what + '</div></div></div>').join('') + '</div></div>').join('')
         + '</div>';
     }
@@ -1633,7 +1637,7 @@
         const tabAccs = { sun: 'var(--sun)', mon: 'var(--mon)', tue: 'var(--tue)', wed: 'var(--wed)', thu: 'var(--thu)', staff: 'var(--sun)' };
         const tabs = tabDefs.map(([k, l]) => '<div class="dt' + (k === aDay ? ' active' : '') + '" data-day="' + k + '" style="' + (k === aDay ? 'color:' + tabAccs[k] : '') + '" onclick="switchTab(' + wk.w + ',\'' + k + '\')">' + l + '</div>').join('');
         const panes = sesPane(wk, 'sun', 'var(--sun)', 'var(--sun-dk)', wk.pa, rSunInst(wk), wk.sun) + sesPane(wk, 'mon', 'var(--mon)', 'var(--mon-dk)', wk.pb, rMonInst(wk), wk.mon) + pracPane(wk, 'tue', 'var(--tue)', 'var(--tue-dk)', wk.tue) + pracPane(wk, 'wed', 'var(--wed)', 'var(--wed-dk)', wk.wed) + mockPane(wk) + staffPane(wk);
-        return '<div class="week-card" id="week-' + wk.w + '"><div class="wh" onclick="toggleWk(' + wk.w + ')"><div class="wc" style="background:' + pbg + '"><div style="font-size:20px;font-weight:500;color:' + ptc + '">' + wk.w + '</div></div><div class="wc"><span class="phase-b" style="background:' + pbg + ';color:' + ptc + '">' + wk.phase + '</span></div><div class="wc"><div class="wl">Sunday · Pattern A</div><div class="wv">' + wk.pa + '</div><div class="ws">' + rSunInst(wk) + '</div></div><div class="wc"><div class="wl">Monday · Pattern B</div><div class="wv">' + wk.pb + '</div><div class="ws">' + rMonInst(wk) + '</div></div><div class="wc"><div class="wl">Instructor this week</div><div class="wv" style="font-size:12px">' + rInst(wk) + '</div><div style="display:flex;gap:4px;flex-wrap:wrap;margin-top:4px"><span style="font-size:9px;font-weight:500;padding:2px 7px;border-radius:20px;background:var(--sun-bg);color:var(--sun-dk)">W' + wk.w + ' of 11</span></div></div><div class="wc"><i class="ti ti-chevron-down chevron' + (isOpen ? ' open' : '') + '" aria-hidden="true"></i></div></div><div class="wd' + (isOpen ? ' open' : '') + '" id="det-' + wk.w + '"><div class="day-tabs">' + tabs + '</div>' + panes + '</div></div>';
+        return '<div class="week-card" id="week-' + wk.w + '"><div class="wh" onclick="toggleWk(' + wk.w + ')"><div class="wc" style="background:' + pbg + '"><div style="font-size:20px;font-weight:500;color:' + ptc + '">' + wk.w + '</div></div><div class="wc"><span class="phase-b" style="background:' + pbg + ';color:' + ptc + '">' + wk.phase + '</span></div><div class="wc"><div class="wl">Sunday · Pattern A</div><div class="wv">' + wk.pa + '</div><div class="ws">' + rSunInst(wk) + '</div></div><div class="wc"><div class="wl">Monday · Pattern B</div><div class="wv">' + wk.pb + '</div><div class="ws">' + rMonInst(wk) + '</div></div><div class="wc"><div class="wl">Instructor this week</div><div class="wv" style="font-size:12px">' + rInst(wk) + '</div><div style="display:flex;gap:4px;flex-wrap:wrap;margin-top:4px"><span style="font-size:9px;font-weight:500;padding:2px 7px;border-radius:20px;background:var(--brand-bg);color:var(--brand-dk)">W' + wk.w + ' of 11</span></div></div><div class="wc"><i class="ti ti-chevron-down chevron' + (isOpen ? ' open' : '') + '" aria-hidden="true"></i></div></div><div class="wd' + (isOpen ? ' open' : '') + '" id="det-' + wk.w + '"><div class="day-tabs">' + tabs + '</div>' + panes + '</div></div>';
       }).join('');
       WEEKS.forEach(wk => {
         const det = document.getElementById('det-' + wk.w); if (!det) return;
@@ -1661,7 +1665,7 @@
 
     function renderInstTable() {
       let h = '<thead><tr><th>Role</th><th>Weeks</th><th>Days present</th><th>Responsibilities</th></tr></thead><tbody>';
-      INST_TABLE.forEach(([role, weeks, days, resp]) => { h += '<tr><td style="font-weight:500">' + role + '</td><td style="color:var(--sun-dk);font-weight:500;white-space:nowrap">' + weeks + '</td><td style="color:var(--t2);font-size:12px;white-space:nowrap">' + days + '</td><td style="color:var(--t2);font-size:12px">' + resp + '</td></tr>'; });
+      INST_TABLE.forEach(([role, weeks, days, resp]) => { h += '<tr><td style="font-weight:500">' + role + '</td><td style="color:var(--brand-dk);font-weight:500;white-space:nowrap">' + weeks + '</td><td style="color:var(--t2);font-size:12px;white-space:nowrap">' + days + '</td><td style="color:var(--t2);font-size:12px">' + resp + '</td></tr>'; });
       h += '</tbody>'; document.getElementById('inst-table').innerHTML = h;
     }
 
