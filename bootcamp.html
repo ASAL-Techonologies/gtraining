@@ -530,7 +530,7 @@
 
     .wh {
       display: grid;
-      grid-template-columns: 48px 44px 1fr 1fr 200px 36px;
+      grid-template-columns: 48px 88px 1fr 1fr 200px 36px;
       align-items: stretch;
       cursor: pointer
     }
@@ -1277,7 +1277,8 @@
                 Concept + template + worked examples for the new pattern of the day, with built-in discussion breaks
                 (code autopsy, debate, worst-case, "explain it to a junior"). Opens with a 5-min think-aloud warm-up.
                 This is the only place new material is introduced — everything else applies it.</td>
-              <td style="padding:.7rem .85rem;border-bottom:0.5px solid var(--bd);vertical-align:top;color:var(--t2)">120
+              <td style="padding:.7rem .85rem;border-bottom:0.5px solid var(--bd);vertical-align:top;color:var(--t2)">
+                120
                 min</td>
             </tr>
             <tr>
@@ -1357,7 +1358,8 @@
               </td>
               <td style="padding:.7rem .85rem;border-bottom:0.5px solid var(--bd);vertical-align:top;color:var(--t2)">
                 First half (30 min): each student walks through one Tuesday solution — TA probes for trade-offs and edge
-                cases. Second half (60 min): timed solo solve under interview conditions, talk-aloud required. The single
+                cases. Second half (60 min): timed solo solve under interview conditions, talk-aloud required. The
+                single
                 dress rehearsal before Thursday's mock.</td>
               <td style="padding:.7rem .85rem;border-bottom:0.5px solid var(--bd);vertical-align:top;color:var(--t2)">90
                 min</td>
@@ -1390,7 +1392,7 @@
               <td style="padding:.7rem .85rem;border-bottom:0.5px solid var(--bd);vertical-align:top;color:var(--t2)">
                 STAR-format behavioral practice: 3 prompts, peer-scored on specificity. Builds the story bank FAANG
                 recruiters expect. <strong>Coordinator-led on even weeks (W2, 4, 6, 8, 10); peer-led with rubric on odd
-                weeks</strong> — once the STAR template is grooved in by W2, the cohort can self-run it.</td>
+                  weeks</strong> — once the STAR template is grooved in by W2, the cohort can self-run it.</td>
               <td style="padding:.7rem .85rem;border-bottom:0.5px solid var(--bd);vertical-align:top;color:var(--t2)">90
                 min</td>
             </tr>
@@ -1445,7 +1447,8 @@
           <div style="font-size:13px;font-weight:500;color:var(--mon-dk);margin-bottom:.25rem">3h/week · All 11 weeks
           </div>
           <div style="font-size:12px;color:var(--mon-t)">Monday guided lab + Tuesday challenge lab for all 25 students.
-            Hops between the 5 breakout rooms on a 9-minute rotation. Group TAs co-cover their own room while solving alongside.</div>
+            Hops between the 5 breakout rooms on a 9-minute rotation. Group TAs co-cover their own room while solving
+            alongside.</div>
         </div>
       </div>
     </section>
@@ -1461,17 +1464,7 @@
         committing for months on-site. Online delivery + the per-week model lets us pull specialist instructors from
         anywhere in the world — finding 11 one-week experts is easier than finding 3–4 long-commitment ones in one
         city.</div>
-      <div class="notice" style="margin-top:.75rem;border-left-color:var(--tue)"><strong>Volunteer-hour cuts (v2):</strong>
-        the program was trimmed to respect volunteer time without changing student outcomes. Combined effect: ~150
-        volunteer-hours saved across the cohort.
-        <ul style="margin:.5rem 0 0 1.1rem;padding:0">
-          <li><strong>Wed walkthrough + pressure lab → merged into a single 90-min "mock prep"</strong> — saves each Group TA 1.5h/week × 11 = ~83h cohort-wide.</li>
-          <li><strong>Session + Discussion folded into one 120-min block</strong> — instructor commitment drops from 5h → 4h live, saving ~11h across the 11 instructors.</li>
-          <li><strong>Behavioral biweekly</strong> (coordinator-led W2/4/6/8/10, peer-led odd weeks) — saves the coordinator ~9h.</li>
-          <li><strong>2 Lab TAs → 1 Lab TA</strong> — viable because online breakout rooms + Group TA co-coverage replace floor-circulation. Saves ~33h.</li>
-          <li><strong>Mock panel: 3 → 2 senior engineers</strong> — each handles more students in Week 11. Saves ~18h.</li>
-        </ul>
-      </div>
+
     </section>
 
     <div class="divl"></div>
@@ -1642,6 +1635,11 @@
         const panes = sesPane(wk, 'sun', 'var(--sun)', 'var(--sun-dk)', wk.pa, rSunInst(wk), wk.sun) + sesPane(wk, 'mon', 'var(--mon)', 'var(--mon-dk)', wk.pb, rMonInst(wk), wk.mon) + pracPane(wk, 'tue', 'var(--tue)', 'var(--tue-dk)', wk.tue) + pracPane(wk, 'wed', 'var(--wed)', 'var(--wed-dk)', wk.wed) + mockPane(wk) + staffPane(wk);
         return '<div class="week-card" id="week-' + wk.w + '"><div class="wh" onclick="toggleWk(' + wk.w + ')"><div class="wc" style="background:' + pbg + '"><div style="font-size:20px;font-weight:500;color:' + ptc + '">' + wk.w + '</div></div><div class="wc"><span class="phase-b" style="background:' + pbg + ';color:' + ptc + '">' + wk.phase + '</span></div><div class="wc"><div class="wl">Sunday · Pattern A</div><div class="wv">' + wk.pa + '</div><div class="ws">' + rSunInst(wk) + '</div></div><div class="wc"><div class="wl">Monday · Pattern B</div><div class="wv">' + wk.pb + '</div><div class="ws">' + rMonInst(wk) + '</div></div><div class="wc"><div class="wl">Instructor this week</div><div class="wv" style="font-size:12px">' + rInst(wk) + '</div><div style="display:flex;gap:4px;flex-wrap:wrap;margin-top:4px"><span style="font-size:9px;font-weight:500;padding:2px 7px;border-radius:20px;background:var(--sun-bg);color:var(--sun-dk)">W' + wk.w + ' of 11</span></div></div><div class="wc"><i class="ti ti-chevron-down chevron' + (isOpen ? ' open' : '') + '" aria-hidden="true"></i></div></div><div class="wd' + (isOpen ? ' open' : '') + '" id="det-' + wk.w + '"><div class="day-tabs">' + tabs + '</div>' + panes + '</div></div>';
       }).join('');
+      WEEKS.forEach(wk => {
+        const det = document.getElementById('det-' + wk.w); if (!det) return;
+        const d = activeTabs[wk.w] || 'sun';
+        det.querySelectorAll('.dpane').forEach(p => p.classList.toggle('active', p.dataset.day === d));
+      });
     }
 
     function renderSR() {
